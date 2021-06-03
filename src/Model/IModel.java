@@ -2,6 +2,7 @@ package Model;
 
 import algorithms.mazeGenerators.Maze;
 import javafx.scene.input.KeyCode;
+import java.util.Observer;
 
 public interface IModel {
 
