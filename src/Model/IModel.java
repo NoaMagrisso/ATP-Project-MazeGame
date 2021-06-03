@@ -1,6 +1,7 @@
 package Model;
 
 import algorithms.mazeGenerators.Maze;
+import algorithms.search.Solution;
 import javafx.scene.input.KeyCode;
 import java.util.Observer;
 
@@ -13,4 +14,6 @@ public interface IModel {
     void solveMaze();
     int getPlayerRow();
     int getPlayerCol();
+    void stop();
+    Solution getMazeSolution();
 }
