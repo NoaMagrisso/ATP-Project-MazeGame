@@ -13,9 +13,9 @@ public class ChooseCharacterController extends AController{
 
     private String chooserCharacterPath = "";
 
-    public void initialize(Stage stage, String chooserCharacterPath) {
+    public void initialize(Stage stage, MyViewModel myViewModel, String chooserCharacterPath) {
         this.stage = stage;
-        //this.myViewModel = myViewModel;
+        this.myViewModel = myViewModel;
         this.chooserCharacterPath = chooserCharacterPath;
     }
 
@@ -53,7 +53,7 @@ public class ChooseCharacterController extends AController{
             stage.setHeight(rectangleSizes.getHeight());
 
             LightOrDarkController lightOrDarkController = lightOrDarkFXMLLoader.getController();
-            lightOrDarkController.initialize(stage, chooserCharacterPath);
+            lightOrDarkController.initialize(this.stage, this.myViewModel, chooserCharacterPath);
             stage.show();
 
 

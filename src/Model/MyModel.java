@@ -3,6 +3,7 @@ package Model;
 import Client.Client;
 import IO.MyDecompressorInputStream;
 import Server.Server;
+import ViewModel.MyViewModel;
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.MyMazeGenerator;
 import algorithms.mazeGenerators.SimpleMazeGenerator;
@@ -35,11 +36,8 @@ public class MyModel extends Observable implements IModel{
         this.playerRow = 0;
         this.playerCol = 0;
         this.mazeSolution = null;
-        this.mazeGenerateServer = new Server(5400, 7001, new ServerStrategyGenerateMaze());
-        this.solveMazeServer = new Server(5400, 7001, new ServerStrategySolveSearchProblem());
-        try {
-            this.maze = (new SimpleMazeGenerator()).generate(2, 2);
-        } catch (Exception e) {};
+        this.mazeGenerateServer = new Server(5400, 1000, new ServerStrategyGenerateMaze());
+        this.solveMazeServer = new Server(5401, 1000, new ServerStrategySolveSearchProblem());
 
         this.mazeGenerateServer.start();
         this.solveMazeServer.start();

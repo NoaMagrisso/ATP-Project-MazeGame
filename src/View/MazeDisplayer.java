@@ -1,9 +1,8 @@
 package View;
 
+import algorithms.mazeGenerators.Maze;
 import algorithms.search.Solution;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -13,12 +12,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class MazeDisplayer extends Canvas {
-    private int[][] maze;
+
+    public DoubleProperty cellHeight = new SimpleDoubleProperty(1);
+    public DoubleProperty cellWidth = new SimpleDoubleProperty(1);
+    private int[][] mazeMatrix;
     private Solution solution;
-    // player position:
     private int playerRow = 0;
     private int playerCol = 0;
-    // wall and player images:
     StringProperty imageFileNameWall = new SimpleStringProperty();
     StringProperty imageFileNamePlayer = new SimpleStringProperty();
 
@@ -66,29 +66,36 @@ public class MazeDisplayer extends Canvas {
         this.imageFileNamePlayer.set(imageFileNamePlayer);
     }
 
-    public void drawMaze(int[][] maze) {
-        this.maze = maze;
+    public void drawMaze(Maze maze) {
+        maze.print();
+        this.mazeMatrix = maze.getMatrix();
         draw();
     }
 
     private void draw() {
-        if(maze != null){
-            double canvasHeight = getHeight();
-            double canvasWidth = getWidth();
-            int rows = maze.length;
-            int cols = maze[0].length;
 
-            double cellHeight = canvasHeight / rows;
-            double cellWidth = canvasWidth / cols;
+        if (mazeMatrix != null) {
 
-            GraphicsContext graphicsContext = getGraphicsContext2D();
-            //clear the canvas:
-            graphicsContext.clearRect(0, 0, canvasWidth, canvasHeight);
+            try {
+                Image wallImage = new Image(new FileInputStream("resources\\images\\iceWall.jpg"));
+                double canvasHeight = getHeight();
+                double canvasWidth = getWidth();
+                int rows = mazeMatrix.length;
+                int cols = mazeMatrix[0].length;
 
-            drawMazeWalls(graphicsContext, cellHeight, cellWidth, rows, cols);
-            if(solution != null)
-                drawSolution(graphicsContext, cellHeight, cellWidth);
-            drawPlayer(graphicsContext, cellHeight, cellWidth);
+                double cellHeight = canvasHeight / rows;
+                double cellWidth = canvasWidth / cols;
+                GraphicsContext graphicsContext = getGraphicsContext2D();
+                graphicsContext.clearRect(0, 0, canvasWidth, canvasHeight);
+                drawMazeWalls(graphicsContext, cellHeight, cellWidth, rows, cols, wallImage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+            //if (solution != null)
+            //    drawSolution(graphicsContext, cellHeight, cellWidth);
+            //drawPlayer(graphicsContext, cellHeight, cellWidth);
         }
     }
 
@@ -97,26 +104,14 @@ public class MazeDisplayer extends Canvas {
         System.out.println("drawing solution...");
     }
 
-    private void drawMazeWalls(GraphicsContext graphicsContext, double cellHeight, double cellWidth, int rows, int cols) {
-        graphicsContext.setFill(Color.RED);
-
-        Image wallImage = null;
-        try{
-            wallImage = new Image(new FileInputStream(getImageFileNameWall()));
-        } catch (FileNotFoundException e) {
-            System.out.println("There is no wall image file");
-        }
-
+    private void drawMazeWalls(GraphicsContext graphicsContext, double cellHeight, double cellWidth, int rows, int cols, Image wallImage) {
+        ;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                if(maze[i][j] == 1){
-                    //if it is a wall:
+                if(mazeMatrix[i][j] == 1) {
                     double x = j * cellWidth;
                     double y = i * cellHeight;
-                    if(wallImage == null)
-                        graphicsContext.fillRect(x, y, cellWidth, cellHeight);
-                    else
-                        graphicsContext.drawImage(wallImage, x, y, cellWidth, cellHeight);
+                    graphicsContext.drawImage(wallImage, x, y, cellWidth, cellHeight); //TODO if the image was not found
                 }
             }
         }

@@ -11,29 +11,35 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-
 import java.util.Optional;
 
 public class Main extends Application {
 
+    public static MyModel myModel;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        //Model
+        myModel = new MyModel();
+        MyViewModel myViewModel = new MyViewModel(myModel);
+        myModel.addObserver(myViewModel);
 
-        FXMLLoader rootFXMLLoader = new FXMLLoader();
-        Parent root = rootFXMLLoader.load(getClass().getResource("MyView.fxml").openStream());
+        FXMLLoader myViewFXMLLoader = new FXMLLoader();
+        Parent myViewRoot = myViewFXMLLoader.load(getClass().getResource("MyView.fxml").openStream());
         primaryStage.setTitle("Maze Game");
-        Scene firstScene = new Scene(root);
+        Scene scene = new Scene(myViewRoot);
 
         primaryStage.setMaximized(true);
-        primaryStage.setScene(firstScene);
+        primaryStage.setScene(scene);
 
-        MyViewController myViewController = rootFXMLLoader.getController();
-        myViewController.initialize(primaryStage);
+
+        MyViewController myViewController = myViewFXMLLoader.getController();
+        myViewController.initialize(primaryStage,myViewModel);
 
         primaryStage.show();
+
     }
+
 
     public static void main(String[] args) {
         launch(args);

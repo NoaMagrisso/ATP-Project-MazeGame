@@ -4,6 +4,7 @@ import Model.IModel;
 import algorithms.mazeGenerators.Maze;
 import algorithms.search.Solution;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 import java.util.Observable;
 import java.util.Observer;
@@ -14,7 +15,6 @@ public class MyViewModel extends Observable implements Observer{
 
     public MyViewModel(IModel model) {
         this.model = model;
-        //this.model.assignObserver(this); //Observe the Model for it's changes
     }
 
     @Override
@@ -43,8 +43,6 @@ public class MyViewModel extends Observable implements Observer{
         this.model.setMaze(newMaze);
     }
 
-    //TODO setPlayerRom/Col ????????
-
     public void stop() {
         model.stop();
     }
@@ -62,5 +60,6 @@ public class MyViewModel extends Observable implements Observer{
     }
 
 
-
+    public void movePlayer(KeyEvent keyEvent) {
+    }
 }

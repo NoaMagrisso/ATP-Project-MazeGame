@@ -14,13 +14,12 @@ public class MyViewController extends AController{
 
     private MyViewModel myViewModel;
 
-    public void initialize(Stage primaryStage) {
+    public void initialize(Stage primaryStage, MyViewModel viewModel) {
         this.stage = primaryStage;
-        //this.myViewModel = viewModel;
+        this.myViewModel = viewModel;
     }
 
     public void Start(ActionEvent actionEvent) {
-        System.out.println("here");
         try {
             FXMLLoader chooseCharacterFXMLLoader = new FXMLLoader();
             Parent mazeChar = chooseCharacterFXMLLoader.load(getClass().getResource("chooseCharacter.fxml").openStream());
@@ -33,7 +32,7 @@ public class MyViewController extends AController{
             stage.setHeight(rectangleSizes.getHeight());
 
             ChooseCharacterController chooseCharacterController = chooseCharacterFXMLLoader.getController();
-            chooseCharacterController.initialize(this.stage, chooseCharacterController.toString());
+            chooseCharacterController.initialize(this.stage, this.myViewModel, chooseCharacterController.toString());
             stage.show();
 
 
