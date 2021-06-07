@@ -26,13 +26,14 @@ public class MyViewController extends AController{
             Scene mazeCharScene = new Scene(mazeChar);
 
             stage.setScene(mazeCharScene);
-            stage.setX(rectangleSizes.getMinX());
-            stage.setY(rectangleSizes.getMinY());
-            stage.setWidth(rectangleSizes.getWidth());
-            stage.setHeight(rectangleSizes.getHeight());
+//            stage.setX(rectangleSizes.getMinX());
+//            stage.setY(rectangleSizes.getMinY());
+//            stage.setWidth(rectangleSizes.getWidth());
+//            stage.setHeight(rectangleSizes.getHeight());
 
             ChooseCharacterController chooseCharacterController = chooseCharacterFXMLLoader.getController();
             chooseCharacterController.initialize(this.stage, this.myViewModel, chooseCharacterController.toString());
+            stage.setResizable(false);
             stage.show();
 
 

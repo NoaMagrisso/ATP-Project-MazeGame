@@ -47,13 +47,14 @@ public class ChooseCharacterController extends AController{
             Scene lightOrDarkScene = new Scene(lightOrDark);
 
             stage.setScene(lightOrDarkScene);
-            stage.setX(rectangleSizes.getMinX());
-            stage.setY(rectangleSizes.getMinY());
-            stage.setWidth(rectangleSizes.getWidth());
-            stage.setHeight(rectangleSizes.getHeight());
+//            stage.setX(rectangleSizes.getMinX());
+//            stage.setY(rectangleSizes.getMinY());
+//            stage.setWidth(rectangleSizes.getWidth());
+//            stage.setHeight(rectangleSizes.getHeight());
 
             LightOrDarkController lightOrDarkController = lightOrDarkFXMLLoader.getController();
             lightOrDarkController.initialize(this.stage, this.myViewModel, chooserCharacterPath);
+            stage.setResizable(false);
             stage.show();
 
 

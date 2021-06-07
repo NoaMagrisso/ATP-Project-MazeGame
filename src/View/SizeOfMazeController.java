@@ -35,13 +35,14 @@ public class SizeOfMazeController extends AController{
             Scene gameScene = new Scene(game);
 
             stage.setScene(gameScene);
-            stage.setX(rectangleSizes.getMinX());
-            stage.setY(rectangleSizes.getMinY());
-            stage.setWidth(rectangleSizes.getWidth());
-            stage.setHeight(rectangleSizes.getHeight());
+//            stage.setX(rectangleSizes.getMinX());
+//            stage.setY(rectangleSizes.getMinY());
+//            stage.setWidth(rectangleSizes.getWidth());
+//            stage.setHeight(rectangleSizes.getHeight());
 
             GameController gameController = gameFXMLLoader.getController();
             gameController.initialize(this.stage, this.myViewModel, chooserCharacterPath, chooserEnvironmentPath, Integer.parseInt(textField_mazeRows.getText()), Integer.parseInt(textField_mazeCols.getText()));
+            stage.setResizable(false);
             stage.show();
 
         } catch (Exception e) {

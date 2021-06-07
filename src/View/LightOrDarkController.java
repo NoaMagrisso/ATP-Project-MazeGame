@@ -36,13 +36,14 @@ public class LightOrDarkController extends AController{
             Scene sizeOfMazeScene = new Scene(sizeOfMaze);
 
             stage.setScene(sizeOfMazeScene);
-            stage.setX(rectangleSizes.getMinX());
-            stage.setY(rectangleSizes.getMinY());
-            stage.setWidth(rectangleSizes.getWidth());
-            stage.setHeight(rectangleSizes.getHeight());
+//            stage.setX(rectangleSizes.getMinX());
+//            stage.setY(rectangleSizes.getMinY());
+//            stage.setWidth(rectangleSizes.getWidth());
+//            stage.setHeight(rectangleSizes.getHeight());
 
             SizeOfMazeController sizeOfMazeController = sizeOfMazeFXMLLoader.getController();
             sizeOfMazeController.initialize(this.stage, this.myViewModel, chooserCharacterPath, chooserEnvironmentPath);
+            stage.setResizable(false);
             stage.show();
 
         } catch (Exception e) {

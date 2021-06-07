@@ -61,10 +61,10 @@ public class GameController extends AController implements Observer {
             Scene myViewScene = new Scene(myView);
 
             stage.setScene(myViewScene);
-            stage.setX(rectangleSizes.getMinX());
-            stage.setY(rectangleSizes.getMinY());
-            stage.setWidth(rectangleSizes.getWidth());
-            stage.setHeight(rectangleSizes.getHeight());
+//            stage.setX(rectangleSizes.getMinX());
+//            stage.setY(rectangleSizes.getMinY());
+//            stage.setWidth(rectangleSizes.getWidth());
+//            stage.setHeight(rectangleSizes.getHeight());
 
             MyViewController myViewController = myViewFXMLLoader.getController();
             myViewController.initialize(this.stage, this.myViewModel);

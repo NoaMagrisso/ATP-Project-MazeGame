@@ -29,7 +29,7 @@ public class Main extends Application {
         primaryStage.setTitle("Maze Game");
         Scene scene = new Scene(myViewRoot);
 
-        primaryStage.setMaximized(true);
+        primaryStage.setResizable(false);
         primaryStage.setScene(scene);
 
 
