@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.SizeOfMazeController">
    <children>
       <TextField fx:id="textField_mazeRows" layoutX="231.0" layoutY="78.0" prefHeight="48.0" prefWidth="137.0" promptText="Enter the rows' size" />
@@ -16,7 +15,7 @@
             <Font name="Berlin Sans FB Bold" size="25.0" />
          </font>
       </ToggleButton>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" text="home" textFill="#ff1515">
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Home" prefHeight="48.0" prefWidth="48.0" text="home" textFill="#ff1515">
          <font>
             <Font size="10.0" />
          </font>

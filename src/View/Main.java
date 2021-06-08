@@ -36,10 +36,25 @@ public class Main extends Application {
         MyViewController myViewController = myViewFXMLLoader.getController();
         myViewController.initialize(primaryStage,myViewModel);
 
+        SetStageCloseEvent(primaryStage);
         primaryStage.show();
 
     }
 
+    public static void SetStageCloseEvent(Stage primaryStage) {
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent windowEvent) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setHeaderText("You can still stay here... Are you sure that you want to exit?");
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    myModel.stop();
+                } else {
+                    windowEvent.consume();
+                }
+            }
+        });
+    }
 
     public static void main(String[] args) {
         launch(args);

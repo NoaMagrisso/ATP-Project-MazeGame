@@ -38,10 +38,13 @@ public class GameController extends AController implements Observer {
 
         System.out.println(this.rows + " " + this.cols);
 
-        if (myViewModel.getMaze() == null) {
-            System.out.println("hhhhhhhhhhhhhh");
-            myViewModel.generateMaze(this.rows, this.cols);
-        }
+
+        myViewModel.generateMaze(this.rows, this.cols);
+
+//        if (myViewModel.getMaze() == null) {
+//            System.out.println("hhhhhhhhhhhhhh");
+//            myViewModel.generateMaze(this.rows, this.cols);
+//        }
 
 //        mazeDisplayer.widthProperty().bind(middlePane.widthProperty());
 //        mazeDisplayer.heightProperty().bind(middlePane.heightProperty());
