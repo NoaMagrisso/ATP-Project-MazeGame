@@ -6,7 +6,7 @@
 
 
 <?import View.MazeDisplayer?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.GameController">
+<AnchorPane onKeyPressed="#KeyPressed" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.GameController">
    <children>
       <MazeDisplayer fx:id="mazeDisplayer" height="353.0" layoutY="49.0" width="600.0" />
       <Button id="Home" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Home" prefHeight="26.0" prefWidth="142.0" text="Home" />

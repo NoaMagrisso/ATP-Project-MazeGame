@@ -83,11 +83,11 @@ public class MyModel extends Observable implements IModel{
     }
 
 
-    private void movePlayer(int row, int col, KeyCode dirc){
+    private void movePlayer(int row, int col, MovementDirection dirc){
         this.playerRow = row;
         this.playerCol = col;
         setChanged();
-        notifyObservers(dirc);
+        notifyObservers("player moved");
     }
 
     @Override
@@ -129,49 +129,94 @@ public class MyModel extends Observable implements IModel{
         return mazeSolution;
     }
 
-    @Override
-    public void updatePlayerLocation(KeyCode direction) {
+//    @Override
+//    public void updatePlayerLocation(KeyCode direction) {
+//        switch (direction) {
+//            case NUMPAD8 -> {
+//                if ((playerRow > 0) && ((this.maze.getMatrix()[playerRow - 1][playerCol]) != 1))
+//                    movePlayer(playerRow - 1, playerCol, direction);
+//            }
+//            case NUMPAD2 -> {
+//                if ((playerRow < maze.getRows() - 1) && ((this.maze.getMatrix()[playerRow + 1][playerCol]) != 1))
+//                    movePlayer(playerRow + 1, playerCol, direction);
+//            }
+//            case NUMPAD4 -> {
+//                if ((playerCol > 0) && ((this.maze.getMatrix()[playerRow][playerCol - 1]) != 1))
+//                    movePlayer(playerRow, playerCol - 1, direction);
+//            }
+//            case NUMPAD6 -> {
+//                if ((playerCol < maze.getCols() - 1) && ((this.maze.getMatrix()[playerRow][playerCol + 1]) != 1))
+//                    movePlayer(playerRow, playerCol + 1, direction);
+//            }
+//            case NUMPAD7 -> {
+//                if ((playerRow > 0) && (playerCol > 0) && ((this.maze.getMatrix()[playerRow - 1][playerCol - 1]) != 1))
+//                    if (((this.maze.getMatrix()[playerRow - 1][playerCol]) != 1) || ((this.maze.getMatrix()[playerRow][playerCol - 1]) != 1))
+//                        movePlayer(playerRow - 1, playerCol - 1, direction);
+//            }
+//            case NUMPAD9 -> {
+//                if ((playerRow > 0) && (playerCol < maze.getCols() - 1) && ((this.maze.getMatrix()[playerRow - 1][playerCol + 1]) != 1))
+//                    if (((this.maze.getMatrix()[playerRow - 1][playerCol]) != 1) || ((this.maze.getMatrix()[playerRow][playerCol + 1]) != 1))
+//                        movePlayer(playerRow - 1, playerCol + 1, direction);
+//            }
+//            case NUMPAD3 -> {
+//                if ((playerRow < maze.getRows() - 1) && (playerCol < maze.getCols() - 1) && ((this.maze.getMatrix()[playerRow + 1][playerCol + 1]) != 1))
+//                    if (((this.maze.getMatrix()[playerRow + 1][playerCol]) != 1) || ((this.maze.getMatrix()[playerRow][playerCol + 1]) != 1))
+//                        movePlayer(playerRow + 1, playerCol + 1, direction);
+//            }
+//            case NUMPAD1 -> {
+//                if ((playerRow < maze.getRows() - 1) && (playerCol > 0) && ((this.maze.getMatrix()[playerRow + 1][playerCol - 1]) != 1))
+//                    if (((this.maze.getMatrix()[playerRow + 1][playerCol]) != 1) || ((this.maze.getMatrix()[playerRow][playerCol - 1]) != 1))
+//                        movePlayer(playerRow + 1, playerCol - 1, direction);
+//            }
+//        }
+//        if ((playerRow == maze.getGoalPosition().getRowIndex()) && (playerCol == maze.getGoalPosition().getColumnIndex())) {
+//            //TODO
+//        }
+//    }
+
+
+    public void updatePlayerLocation(MovementDirection direction) {
         switch (direction) {
-            case NUMPAD8 -> {
+            case UP -> {
                 if ((playerRow > 0) && ((this.maze.getMatrix()[playerRow - 1][playerCol]) != 1))
                     movePlayer(playerRow - 1, playerCol, direction);
             }
-            case NUMPAD2 -> {
+            case DOWN -> {
                 if ((playerRow < maze.getRows() - 1) && ((this.maze.getMatrix()[playerRow + 1][playerCol]) != 1))
                     movePlayer(playerRow + 1, playerCol, direction);
             }
-            case NUMPAD4 -> {
+            case LEFT -> {
                 if ((playerCol > 0) && ((this.maze.getMatrix()[playerRow][playerCol - 1]) != 1))
                     movePlayer(playerRow, playerCol - 1, direction);
             }
-            case NUMPAD6 -> {
+            case RIGHT -> {
                 if ((playerCol < maze.getCols() - 1) && ((this.maze.getMatrix()[playerRow][playerCol + 1]) != 1))
                     movePlayer(playerRow, playerCol + 1, direction);
             }
-            case NUMPAD7 -> {
+            case UPLEFT -> {
                 if ((playerRow > 0) && (playerCol > 0) && ((this.maze.getMatrix()[playerRow - 1][playerCol - 1]) != 1))
                     if (((this.maze.getMatrix()[playerRow - 1][playerCol]) != 1) || ((this.maze.getMatrix()[playerRow][playerCol - 1]) != 1))
                         movePlayer(playerRow - 1, playerCol - 1, direction);
             }
-            case NUMPAD9 -> {
+            case UPRIGHT -> {
                 if ((playerRow > 0) && (playerCol < maze.getCols() - 1) && ((this.maze.getMatrix()[playerRow - 1][playerCol + 1]) != 1))
                     if (((this.maze.getMatrix()[playerRow - 1][playerCol]) != 1) || ((this.maze.getMatrix()[playerRow][playerCol + 1]) != 1))
                         movePlayer(playerRow - 1, playerCol + 1, direction);
             }
-            case NUMPAD3 -> {
+            case DOWNRIGHT -> {
                 if ((playerRow < maze.getRows() - 1) && (playerCol < maze.getCols() - 1) && ((this.maze.getMatrix()[playerRow + 1][playerCol + 1]) != 1))
                     if (((this.maze.getMatrix()[playerRow + 1][playerCol]) != 1) || ((this.maze.getMatrix()[playerRow][playerCol + 1]) != 1))
                         movePlayer(playerRow + 1, playerCol + 1, direction);
             }
-            case NUMPAD1 -> {
+            case DOWNLEFT -> {
                 if ((playerRow < maze.getRows() - 1) && (playerCol > 0) && ((this.maze.getMatrix()[playerRow + 1][playerCol - 1]) != 1))
                     if (((this.maze.getMatrix()[playerRow + 1][playerCol]) != 1) || ((this.maze.getMatrix()[playerRow][playerCol - 1]) != 1))
                         movePlayer(playerRow + 1, playerCol - 1, direction);
             }
         }
-        if ((playerRow == maze.getGoalPosition().getRowIndex()) && (playerCol == maze.getGoalPosition().getColumnIndex())) {
-            //TODO
-        }
+//        if ((playerRow == maze.getGoalPosition().getRowIndex()) && (playerCol == maze.getGoalPosition().getColumnIndex())) {
+//            //TODO
+//        }
     }
 
     @Override

@@ -106,7 +106,9 @@ public class GameController extends AController implements Observer {
     public void openFile(ActionEvent actionEvent) {
     }
 
-    public void keyPressed(KeyEvent keyEvent) {
+    public void KeyPressed(KeyEvent keyEvent) {
+        myViewModel.updatePlayerLocation(keyEvent);
+        keyEvent.consume();
     }
 }
 
