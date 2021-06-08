@@ -79,7 +79,8 @@ public class MyModel extends Observable implements IModel{
         }
 
         setChanged();
-        notifyObservers(maze);
+        notifyObservers("maze generated");
+        movePlayer(0, 0, null);
     }
 
 

@@ -3,6 +3,8 @@ package View;
 import ViewModel.MyViewModel;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +27,9 @@ public class GameController extends AController implements Observer {
     @FXML
     private MazeDisplayer mazeDisplayer;
     private DoubleProperty myScale = new SimpleDoubleProperty(1.0);
+
+    StringProperty updatePlayerRow = new SimpleStringProperty();
+    StringProperty updatePlayerCol = new SimpleStringProperty();
 
     public void initialize(Stage stage, MyViewModel myViewModel, String chooserCharacterPath, String chooserEnvironmentPath, int rows, int cols) {
         this.stage = stage;
@@ -92,9 +97,14 @@ public class GameController extends AController implements Observer {
 
     }
 
-    @Override
     public void update(Observable o, Object arg) {
-
+        String change = (String) arg;
+        switch (change){
+            case "maze generated" -> mazeGenerated();
+            case "player moved" -> playerMoved();
+//            case "maze solved" -> mazeSolved();
+            default -> System.out.println("Not implemented change: " + change);
+        }
     }
 
     public void generateMaze(ActionEvent actionEvent) {
@@ -110,30 +120,32 @@ public class GameController extends AController implements Observer {
         myViewModel.updatePlayerLocation(keyEvent);
         keyEvent.consume();
     }
+
+    private void playerMoved() {
+        setPlayerPosition(myViewModel.getPlayerRow(), myViewModel.getPlayerCol());
+    }
+
+
+    private void mazeGenerated() {
+        mazeDisplayer.drawMaze(myViewModel.getMaze());
+    }
+
+    public void setPlayerPosition(int row, int col){
+        mazeDisplayer.setPlayerPosition(row, col);
+        setUpdatePlayerRow(row);
+        setUpdatePlayerCol(col);
+    }
+
+    public void setUpdatePlayerRow(int updatePlayerRow) {
+        this.updatePlayerRow.set(updatePlayerRow + "");
+    }
+
+    public void setUpdatePlayerCol(int updatePlayerCol) {
+        this.updatePlayerCol.set(updatePlayerCol + "");
+    }
+
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -94,6 +94,7 @@ public class MazeDisplayer extends Canvas {
                 GraphicsContext graphicsContext = getGraphicsContext2D();
                 graphicsContext.clearRect(0, 0, canvasWidth, canvasHeight);
                 drawMazeWalls(graphicsContext, cellHeight, cellWidth, rows, cols, wallImage, goalImage, startImage, wayImage);
+                drawPlayer(graphicsContext, cellHeight, cellWidth, startImage);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -101,7 +102,6 @@ public class MazeDisplayer extends Canvas {
 
             //if (solution != null)
             //    drawSolution(graphicsContext, cellHeight, cellWidth);
-            //drawPlayer(graphicsContext, cellHeight, cellWidth);
         }
     }
 
@@ -115,11 +115,11 @@ public class MazeDisplayer extends Canvas {
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                if (i == 0 && j == 0) {
-                    graphicsContext.drawImage(startImage, 0, 0, cellWidth, cellHeight); //TODO if the image was not found
-
-                }
-                else if (i == this.goal.getRowIndex() && j == this.goal.getColumnIndex()) {
+//                if (i == 0 && j == 0) {
+//                    graphicsContext.drawImage(startImage, 0, 0, cellWidth, cellHeight); //TODO if the image was not found
+//
+//                }
+                if (i == this.goal.getRowIndex() && j == this.goal.getColumnIndex()) {
                     graphicsContext.drawImage(goalImage, j * cellWidth, i * cellHeight, cellWidth, cellHeight); //TODO if the image was not found
                 }
                 else if (mazeMatrix[i][j] == 1 && (i != this.goal.getRowIndex() || j != this.goal.getColumnIndex())) {
@@ -137,20 +137,9 @@ public class MazeDisplayer extends Canvas {
         }
     }
 
-    private void drawPlayer(GraphicsContext graphicsContext, double cellHeight, double cellWidth) {
+    private void drawPlayer(GraphicsContext graphicsContext, double cellHeight, double cellWidth, Image player) {
         double x = getPlayerCol() * cellWidth;
         double y = getPlayerRow() * cellHeight;
-        graphicsContext.setFill(Color.GREEN);
-
-        Image playerImage = null;
-        try {
-            playerImage = new Image(new FileInputStream(getImageFileNamePlayer()));
-        } catch (FileNotFoundException e) {
-            System.out.println("There is no player image file");
-        }
-        if(playerImage == null)
-            graphicsContext.fillRect(x, y, cellWidth, cellHeight);
-        else
-            graphicsContext.drawImage(playerImage, x, y, cellWidth, cellHeight);
+        graphicsContext.drawImage(player, x, y, cellWidth, cellHeight);
     }
 }
