@@ -2,6 +2,8 @@ package View;
 
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.Position;
+import algorithms.search.AState;
+import algorithms.search.MazeState;
 import algorithms.search.Solution;
 import javafx.beans.property.*;
 import javafx.scene.canvas.Canvas;
@@ -23,6 +25,9 @@ public class MazeDisplayer extends Canvas {
     StringProperty imageFileNameWall = new SimpleStringProperty();
     StringProperty imageFileNamePlayer = new SimpleStringProperty();
     private Position goal;
+
+    int rowSolution_i;
+    int colSolution_i;
 
 
     public int getPlayerRow() {
@@ -84,6 +89,7 @@ public class MazeDisplayer extends Canvas {
                 Image goalImage = new Image(new FileInputStream("resources\\images\\goalPicJerry.png"));
                 Image startImage = new Image(new FileInputStream("resources\\images\\tomPic.png"));
                 Image wayImage = new Image(new FileInputStream("resources\\images\\wayPic.png"));
+                Image solutionImage = new Image(new FileInputStream("resources\\images\\solutionPic.jpg"));
                 double canvasHeight = getHeight();
                 double canvasWidth = getWidth();
                 int rows = mazeMatrix.length;
@@ -95,19 +101,31 @@ public class MazeDisplayer extends Canvas {
                 graphicsContext.clearRect(0, 0, canvasWidth, canvasHeight);
                 drawMazeWalls(graphicsContext, cellHeight, cellWidth, rows, cols, wallImage, goalImage, startImage, wayImage);
                 drawPlayer(graphicsContext, cellHeight, cellWidth, startImage);
+                //drawSolution(graphicsContext,cellHeight,cellWidth);
+                if (solution != null)
+                    drawSolution(solutionImage ,graphicsContext, cellHeight, cellWidth, solution);
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
 
-            //if (solution != null)
-            //    drawSolution(graphicsContext, cellHeight, cellWidth);
         }
     }
 
-    private void drawSolution(GraphicsContext graphicsContext, double cellHeight, double cellWidth) {
-        // need to be implemented
-        System.out.println("drawing solution...");
+    private void drawSolution(Image solutionImage, GraphicsContext graphicsContext, double cellHeight, double cellWidth, Solution sol) {
+
+        for (int i = 0; i < sol.getSolutionPath().size()-1; i++) {
+            AState a = sol.getSolutionPath().get(i);
+            MazeState m = (MazeState)a;
+            rowSolution_i = m.getPosState().getRowIndex();
+            colSolution_i = m.getPosState().getColumnIndex();
+
+            double x = colSolution_i * cellWidth;
+            double y = rowSolution_i * cellHeight;
+            graphicsContext.drawImage(solutionImage, x, y, cellWidth, cellHeight);
+
+
+        }
     }
 
     private void drawMazeWalls(GraphicsContext graphicsContext, double cellHeight, double cellWidth, int rows, int cols, Image wallImage, Image goalImage, Image startImage, Image wayImage) {

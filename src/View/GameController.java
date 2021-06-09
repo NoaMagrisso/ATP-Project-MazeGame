@@ -87,13 +87,16 @@ public class GameController extends AController implements Observer {
 
     public void Reset(ActionEvent actionEvent) {
 
+        setPlayerPosition(0,0);
+        mazeDisplayer.setSolution(null);
+
         System.out.println("reset the maze...");
 
     }
 
     public void ShowSolution(ActionEvent actionEvent) {
 
-        System.out.println("loser :(" + "\n" +  "We will show you the solution!");
+        myViewModel.solveMaze();
 
     }
 
@@ -102,9 +105,14 @@ public class GameController extends AController implements Observer {
         switch (change){
             case "maze generated" -> mazeGenerated();
             case "player moved" -> playerMoved();
-//            case "maze solved" -> mazeSolved();
+            case "maze solved" -> mazeSolved();
             default -> System.out.println("Not implemented change: " + change);
         }
+    }
+
+    private void mazeSolved() {
+        mazeDisplayer.setSolution(myViewModel.getSolution());
+
     }
 
     public void generateMaze(ActionEvent actionEvent) {

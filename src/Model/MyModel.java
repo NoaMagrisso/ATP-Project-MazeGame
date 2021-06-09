@@ -123,10 +123,11 @@ public class MyModel extends Observable implements IModel{
         }
 
         setChanged();
-        notifyObservers(mazeSolution);
+        notifyObservers("maze solved");
     }
 
     public Solution getMazeSolution() {
+        //solveMaze();
         return mazeSolution;
     }
 
