@@ -12,8 +12,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -150,6 +153,23 @@ public class GameController extends AController implements Observer {
 
     public void setUpdatePlayerCol(int updatePlayerCol) {
         this.updatePlayerCol.set(updatePlayerCol + "");
+    }
+
+    public void Save() throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        /*
+        System.getProperty("user.home") :
+        on Windows:  home directory of the current logged in user. c:\Users\${current_user_name}
+        * on Linux: "/home/user/"  */
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Maze Files", "*.maze")
+        );
+        fileChooser.setInitialFileName("My Maze To Save");
+        File saveFile = fileChooser.showSaveDialog(stage);
+        if (saveFile != null) {
+            myViewModel.SaveGame(saveFile);
+        }
     }
 
 

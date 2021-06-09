@@ -131,6 +131,31 @@ public class MyModel extends Observable implements IModel{
         return mazeSolution;
     }
 
+    @Override
+    public void saveMaze(String path){    //TODO NOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        try {
+            File newFileToSave = new File(path);
+            newFileToSave.createNewFile();
+            StringBuilder  builder = new StringBuilder();
+            builder.append(playerRow+"\n"+ playerCol + "\n" + maze.getGoalPosition().getRowIndex() + "\n" + maze.getGoalPosition().getColumnIndex()+"\n"+maze.getRows()+"\n"+maze.getCols()+"\n");
+            for(int i = 0; i < maze.getRows(); i++) {
+                for(int j = 0; j < maze.getCols(); j++) {
+                    builder.append(String.valueOf(maze.getMatrix()[i][j]));
+                    if(j < maze.getCols() - 1)
+                        builder.append(",");
+                }
+                builder.append("\n");
+            }
+            BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+            writer.write(builder.toString());
+            writer.flush();
+            writer.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
 //    @Override
 //    public void updatePlayerLocation(KeyCode direction) {
 //        switch (direction) {

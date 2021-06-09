@@ -7,6 +7,8 @@ import algorithms.search.Solution;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -85,4 +87,7 @@ public class MyViewModel extends Observable implements Observer{
         model.solveMaze();
     }
 
+    public void SaveGame(File saveFile) throws IOException {
+        model.saveMaze(saveFile.getPath());
+    }
 }

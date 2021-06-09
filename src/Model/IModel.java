@@ -3,6 +3,8 @@ package Model;
 import algorithms.mazeGenerators.Maze;
 import algorithms.search.Solution;
 import javafx.scene.input.KeyCode;
+
+import java.io.File;
 import java.util.Observer;
 
 public interface IModel {
@@ -16,4 +18,6 @@ public interface IModel {
     int getPlayerCol();
     void stop();
     Solution getMazeSolution();
+
+    void saveMaze(String path);
 }
