@@ -8,11 +8,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
@@ -31,12 +37,14 @@ public class SizeOfMazeController extends AController{
     public CheckMenuItem MyMazeGenerator;
     public MenuItem threadPool;
     public RadioMenuItem menu_Options_Mute;
+    public ImageView imageAbout;
+    public MazeDisplayer ImageDisplayer;
     private String chooserCharacterPath;
     private String chooserEnvironmentPath;
     private int rows;
     private int cols;
 
-    public void initialize(Stage stage, MyViewModel myViewModel, String chooserCharacterPath, String chooserEnvironmentPath) {
+    public void initialize(Stage stage, MyViewModel myViewModel, String chooserCharacterPath, String chooserEnvironmentPath) throws FileNotFoundException {
         this.stage = stage;
         this.myViewModel = myViewModel;
         this.chooserCharacterPath = chooserCharacterPath;

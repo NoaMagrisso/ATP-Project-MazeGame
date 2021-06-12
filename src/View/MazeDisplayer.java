@@ -54,30 +54,6 @@ public class MazeDisplayer extends Canvas {
         draw();
     }
 
-    public String getImageFileNameWall() {
-        return imageFileNameWall.get();
-    }
-
-    public String imageFileNameWallProperty() {
-        return imageFileNameWall.get();
-    }
-
-    public void setImageFileNameWall(String imageFileNameWall) {
-        this.imageFileNameWall.set(imageFileNameWall);
-    }
-
-    public String getImageFileNamePlayer() {
-        return imageFileNamePlayer.get();
-    }
-
-    public String imageFileNamePlayerProperty() {
-        return imageFileNamePlayer.get();
-    }
-
-    public void setImageFileNamePlayer(String imageFileNamePlayer) {
-        this.imageFileNamePlayer.set(imageFileNamePlayer);
-    }
-
     public void drawMaze(Maze maze) {
         this.goal = maze.getGoalPosition();
         this.mazeMatrix = maze.getMatrix();
@@ -89,8 +65,8 @@ public class MazeDisplayer extends Canvas {
         if (mazeMatrix != null) {
             try {
                 Image wallImage = new Image(new FileInputStream("resources\\images\\iceWall.jpg"));
-                Image goalImage = new Image(new FileInputStream("resources\\images\\goalPicJerry.png"));
-                Image startImage = new Image(new FileInputStream("resources\\images\\tomPic.png"));
+                Image goalImage = new Image(new FileInputStream("resources\\images\\goalPicJerry.JPG"));
+                Image startImage = new Image(new FileInputStream("resources\\images\\tomPic.JPG"));
                 Image wayImage = new Image(new FileInputStream("resources\\images\\wayPic.png"));
                 Image solutionImage = new Image(new FileInputStream("resources\\images\\solutionPic.jpg"));
                 double canvasHeight = getHeight();

@@ -45,7 +45,7 @@
                 <Menu mnemonicParsing="false" text="Exit">
                     <items>
                         <MenuItem id="goHome" mnemonicParsing="false" onAction="#Home" text="Go Home" />
-                        <MenuItem id="exitTheGame" mnemonicParsing="false" text="Exit the Game" />
+                        <MenuItem id="exitTheGame" mnemonicParsing="false" onAction="#Exit" text="Exit the Game" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help" />
