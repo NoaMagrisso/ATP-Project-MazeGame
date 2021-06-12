@@ -20,4 +20,6 @@ public interface IModel {
     Solution getMazeSolution();
 
     void saveMaze(String path);
+
+    void loadMaze(File loadFile);
 }

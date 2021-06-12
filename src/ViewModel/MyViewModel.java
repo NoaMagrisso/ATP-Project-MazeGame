@@ -21,7 +21,7 @@ public class MyViewModel extends Observable implements Observer{
     }
 
     @Override
-    public void update(Observable o, Object arg) { //TODO idooooooooooooooooooooo
+    public void update(Observable o, Object arg) {
         setChanged();
         notifyObservers(arg);
     }
@@ -89,5 +89,9 @@ public class MyViewModel extends Observable implements Observer{
 
     public void SaveGame(File saveFile) throws IOException {
         model.saveMaze(saveFile.getPath());
+    }
+
+    public void loadGame(File loadFile) throws IOException, ClassNotFoundException {
+        model.loadMaze(loadFile);
     }
 }

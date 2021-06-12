@@ -44,6 +44,11 @@ public class MazeDisplayer extends Canvas {
         draw();
     }
 
+    public void setPlayerPositionOnly(int row, int col) {
+        this.playerRow = row;
+        this.playerCol = col;
+    }
+
     public void setSolution(Solution solution) {
         this.solution = solution;
         draw();
@@ -74,7 +79,6 @@ public class MazeDisplayer extends Canvas {
     }
 
     public void drawMaze(Maze maze) {
-        maze.print();
         this.goal = maze.getGoalPosition();
         this.mazeMatrix = maze.getMatrix();
         draw();
@@ -83,7 +87,6 @@ public class MazeDisplayer extends Canvas {
     private void draw() {
 
         if (mazeMatrix != null) {
-
             try {
                 Image wallImage = new Image(new FileInputStream("resources\\images\\iceWall.jpg"));
                 Image goalImage = new Image(new FileInputStream("resources\\images\\goalPicJerry.png"));
@@ -108,7 +111,6 @@ public class MazeDisplayer extends Canvas {
                 e.printStackTrace();
             }
 
-
         }
     }
 
@@ -123,9 +125,11 @@ public class MazeDisplayer extends Canvas {
             double x = colSolution_i * cellWidth;
             double y = rowSolution_i * cellHeight;
             graphicsContext.drawImage(solutionImage, x, y, cellWidth, cellHeight);
-
-
         }
+    }
+
+    public void setNullSolution() {
+        this.solution = null;
     }
 
     private void drawMazeWalls(GraphicsContext graphicsContext, double cellHeight, double cellWidth, int rows, int cols, Image wallImage, Image goalImage, Image startImage, Image wayImage) {
@@ -160,4 +164,10 @@ public class MazeDisplayer extends Canvas {
         double y = getPlayerRow() * cellHeight;
         graphicsContext.drawImage(player, x, y, cellWidth, cellHeight);
     }
+
+
+//    public void setMaze(Maze maze) {
+//        this.mazeMatrix = maze.getMatrix();
+//
+//    }
 }

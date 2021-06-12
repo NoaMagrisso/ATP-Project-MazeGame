@@ -6,6 +6,7 @@ import Server.Server;
 import ViewModel.MyViewModel;
 import algorithms.mazeGenerators.Maze;
 import algorithms.mazeGenerators.MyMazeGenerator;
+import algorithms.mazeGenerators.Position;
 import algorithms.mazeGenerators.SimpleMazeGenerator;
 import algorithms.search.AState;
 import algorithms.search.Solution;
@@ -153,6 +154,74 @@ public class MyModel extends Observable implements IModel{
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void loadMaze(File loadFile) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(loadFile));
+            int playerRowIdx = 0;
+            int playerColIdx = 0;
+            int goalMazeRow = 1;
+            int goalMazeCol = 1;
+            Position goalMaze = new Position(1,1);
+            int rows = 2;
+            int cols = 2;
+            /*read 6 lines from file -- the saved parameters of a maze game */
+            for (int i = 0 ; i < 6 ; i++) {
+                String line = br.readLine();
+                if (line != null) {
+                    if (i == 0) { //TODO Maybe always 0?
+                        playerRowIdx = Integer.parseInt(line);
+                        System.out.println(playerRowIdx);
+                    }
+                    if (i == 1) { //TODO Maybe always 0?
+                        playerColIdx = Integer.parseInt(line);
+                        System.out.println(playerColIdx);
+                    }
+                    if (i == 2)
+                        goalMazeRow = Integer.parseInt(line);
+                    if (i == 3)
+                        goalMazeCol = Integer.parseInt(line);
+                    if (i == 4)
+                        rows = Integer.parseInt(line);
+                    if (i == 5)
+                        cols = Integer.parseInt(line);
+                }
+            }
+
+            goalMaze = new Position(goalMazeRow, goalMazeCol);
+
+            int[][] matrixForMaze = new int[rows][cols];
+            String line = "";
+            int rowIdx = 0;
+            while ((line = br.readLine()) != null) {
+                String[] colsOfMatrix = line.split(",");
+                int colIdx = 0;
+                for (String col : colsOfMatrix) {
+                    matrixForMaze[rowIdx][colIdx] = Integer.parseInt(col);
+                    colIdx++;
+                }
+                rowIdx++;
+            }
+            br.close();
+            this.maze = new Maze(rows, cols);
+            this.maze.setMatrix(matrixForMaze);
+            this.maze.setEnd(goalMaze);
+
+            this.playerRow = playerRowIdx;
+            this.playerCol = playerColIdx;
+            //this.mazeGoalPosColIdx = playerPosColIdx;
+            //this.mazeGoalPosRowIdx = playerPosRowIdx;
+            //isMazeExist=true;
+            setChanged();
+            notifyObservers("file loaded");
+            System.out.println("Finish Loaded");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 
