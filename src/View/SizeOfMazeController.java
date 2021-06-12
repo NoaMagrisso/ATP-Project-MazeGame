@@ -75,15 +75,6 @@ public class SizeOfMazeController extends AController{
 
     }
 
-    public void New(ActionEvent actionEvent) {
-    }
-
-    public void Save(ActionEvent actionEvent) {
-    }
-
-    public void Load(ActionEvent actionEvent) {
-    }
-
     public void solverDepthFirstSearch(ActionEvent actionEvent) {
         BestFirstSearch.setSelected(false);
         BreathFirstSearch.setSelected(false);

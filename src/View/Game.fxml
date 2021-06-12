@@ -49,7 +49,7 @@
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help" />
-                <Menu mnemonicParsing="false" text="About" />
+                <Menu disable="true" mnemonicParsing="false" text="About" />
                 <Menu id="showSolutionMenu" mnemonicParsing="false" text="Show Solution">
                     <items>
                         <MenuItem id="showSolutionItem" mnemonicParsing="false" onAction="#ShowSolution" text="Show The Solution Path" />
