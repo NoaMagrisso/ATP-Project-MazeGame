@@ -17,6 +17,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -256,4 +257,23 @@ public class GameController extends AController implements Observer {
             actionEvent.consume();
         }
     }
+
+    public void Help(ActionEvent actionEvent) {
+        try {
+            Stage newStage = new Stage();
+            newStage.setTitle("Help");
+            FXMLLoader myViewFXMLLoader = new FXMLLoader();
+            Parent myViewRoot = myViewFXMLLoader.load(getClass().getResource("Help.fxml").openStream());
+            Scene scene = new Scene(myViewRoot, 550, 400);
+            newStage.setScene(scene);
+            newStage.initModality(Modality.APPLICATION_MODAL);
+
+            //newStage.setMinWidth();
+            newStage.show();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
