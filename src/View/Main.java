@@ -28,8 +28,8 @@ public class Main extends Application {
         Parent myViewRoot = myViewFXMLLoader.load(getClass().getResource("MyView.fxml").openStream());
         primaryStage.setTitle("Maze Game");
         Scene scene = new Scene(myViewRoot);
-
-        primaryStage.setResizable(false);
+        //primaryStage.setMaximized(true);
+        //primaryStage.setResizable(false);
         primaryStage.setScene(scene);
 
 
