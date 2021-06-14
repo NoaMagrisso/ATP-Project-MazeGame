@@ -50,10 +50,10 @@ public class MyViewModel extends Observable implements Observer{
         model.stop();
     }
 
-    public void updatePlayerLocation(KeyEvent keyEvent) {
+    public void updatePlayerLocation(KeyCode keyCode) {
 
         MovementDirection direction;
-        switch (keyEvent.getCode()){
+        switch (keyCode){
             case NUMPAD8 -> direction = MovementDirection.UP;
             case DIGIT8 -> direction = MovementDirection.UP;
             case NUMPAD2 -> direction = MovementDirection.DOWN;

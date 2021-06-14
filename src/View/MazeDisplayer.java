@@ -16,15 +16,15 @@ import java.io.FileNotFoundException;
 
 public class MazeDisplayer extends Canvas {
 
-    public DoubleProperty cellHeight = new SimpleDoubleProperty(1);
-    public DoubleProperty cellWidth = new SimpleDoubleProperty(1);
+
     private int[][] mazeMatrix;
     private Solution solution;
     private int playerRow = 0;
     private int playerCol = 0;
-    StringProperty imageFileNameWall = new SimpleStringProperty();
-    StringProperty imageFileNamePlayer = new SimpleStringProperty();
+
     private Position goal;
+    private volatile Object Factor = new Object();
+
 
     int rowSolution_i;
     int colSolution_i;
@@ -113,10 +113,7 @@ public class MazeDisplayer extends Canvas {
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-//                if (i == 0 && j == 0) {
-//                    graphicsContext.drawImage(startImage, 0, 0, cellWidth, cellHeight); //TODO if the image was not found
-//
-//                }
+
                 if (i == this.goal.getRowIndex() && j == this.goal.getColumnIndex()) {
                     graphicsContext.drawImage(goalImage, j * cellWidth, i * cellHeight, cellWidth, cellHeight); //TODO if the image was not found
                 }
@@ -141,9 +138,4 @@ public class MazeDisplayer extends Canvas {
         graphicsContext.drawImage(player, x, y, cellWidth, cellHeight);
     }
 
-
-//    public void setMaze(Maze maze) {
-//        this.mazeMatrix = maze.getMatrix();
-//
-//    }
 }

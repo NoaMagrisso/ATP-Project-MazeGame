@@ -14,7 +14,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -152,7 +155,7 @@ public class GameController extends AController implements Observer {
     }
 
     public void KeyPressed(KeyEvent keyEvent) {
-        myViewModel.updatePlayerLocation(keyEvent);
+        myViewModel.updatePlayerLocation(keyEvent.getCode());
         keyEvent.consume();
     }
 
@@ -274,6 +277,54 @@ public class GameController extends AController implements Observer {
         catch (Exception e) {
             e.printStackTrace();
         }
+
+
+
     }
 
+
+
+
+    public void mouseDragged(MouseEvent mouseEvent) {
+        if(myViewModel.getMaze() != null) {
+            double changePositionOnLineX = helper(Math.max(myViewModel.getMaze().getMatrix()[0].length, myViewModel.getMaze().getMatrix().length),mazeDisplayer.getHeight(),
+                    myViewModel.getMaze().getMatrix().length,mouseEvent.getX(),mazeDisplayer.getWidth() / Math.max(myViewModel.getMaze().getMatrix()[0].length, myViewModel.getMaze().getMatrix().length));
+
+
+
+            double changePositionOnLineY = helper(Math.max(myViewModel.getMaze().getMatrix()[0].length, myViewModel.getMaze().getMatrix().length),mazeDisplayer.getWidth(),
+                    myViewModel.getMaze().getMatrix()[0].length,mouseEvent.getY(),mazeDisplayer.getHeight() / Math.max(myViewModel.getMaze().getMatrix()[0].length, myViewModel.getMaze().getMatrix().length));
+
+            if (changePositionOnLineX == myViewModel.getPlayerCol() && changePositionOnLineY < myViewModel.getPlayerRow())
+                myViewModel.updatePlayerLocation(KeyCode.NUMPAD8);
+            else if (changePositionOnLineX == myViewModel.getPlayerCol() && changePositionOnLineY > myViewModel.getPlayerRow())
+                myViewModel.updatePlayerLocation(KeyCode.NUMPAD2);
+            else if (changePositionOnLineY == myViewModel.getPlayerRow() && changePositionOnLineX < myViewModel.getPlayerCol())
+                myViewModel.updatePlayerLocation(KeyCode.NUMPAD4);
+            else if (changePositionOnLineY == myViewModel.getPlayerRow() && changePositionOnLineX > myViewModel.getPlayerCol())
+                myViewModel.updatePlayerLocation(KeyCode.NUMPAD6);
+            else if (changePositionOnLineY > myViewModel.getPlayerRow() && changePositionOnLineX < myViewModel.getPlayerCol() && (myViewModel.getMaze().getMatrix()[myViewModel.getPlayerRow() + 1][myViewModel.getPlayerCol()] == 0 || myViewModel.getMaze().getMatrix()[myViewModel.getPlayerRow()][myViewModel.getPlayerCol() - 1] == 0))
+                myViewModel.updatePlayerLocation(KeyCode.NUMPAD1);
+            else if (changePositionOnLineY > myViewModel.getPlayerRow() && changePositionOnLineX > myViewModel.getPlayerCol() && (myViewModel.getMaze().getMatrix()[myViewModel.getPlayerRow() + 1][myViewModel.getPlayerCol()] == 0 || myViewModel.getMaze().getMatrix()[myViewModel.getPlayerRow()][myViewModel.getPlayerCol() + 1] == 0))
+                myViewModel.updatePlayerLocation(KeyCode.NUMPAD3);
+            else if (changePositionOnLineY < myViewModel.getPlayerRow() && changePositionOnLineX < myViewModel.getPlayerCol() && (myViewModel.getMaze().getMatrix()[myViewModel.getPlayerRow() - 1][myViewModel.getPlayerCol()] == 0 || myViewModel.getMaze().getMatrix()[myViewModel.getPlayerRow()][myViewModel.getPlayerCol() - 1] == 0))
+                myViewModel.updatePlayerLocation(KeyCode.NUMPAD7);
+            else if (changePositionOnLineY < myViewModel.getPlayerRow() && changePositionOnLineX > myViewModel.getPlayerCol() && (myViewModel.getMaze().getMatrix()[myViewModel.getPlayerRow() - 1][myViewModel.getPlayerCol()] == 0 || myViewModel.getMaze().getMatrix()[myViewModel.getPlayerRow()][myViewModel.getPlayerCol() + 1] == 0))
+                myViewModel.updatePlayerLocation(KeyCode.NUMPAD9);
+
+        }
+    }
+
+    public void mouseClicked(MouseEvent mouseEvent) {
+        mazeDisplayer.requestFocus();
+    }
+
+    private  double helper(int maxsize, double mazedisplayerSize, int mazeSize,double mouseEvent,double number){
+        double result = (int) ((mouseEvent) / (number) - ((mazedisplayerSize / 2 - ((mazedisplayerSize/maxsize) * mazeSize / 2)) / (mazedisplayerSize/maxsize)));
+        return result;
+    }
+
+
+    public void setOnScroll(ScrollEvent scrollEvent) {
+    }
 }
