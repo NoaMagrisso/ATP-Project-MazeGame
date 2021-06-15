@@ -12,7 +12,7 @@
 <?import javafx.scene.control.CheckMenuItem?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#KeyPressed" onScroll="#setOnScroll" prefHeight="450.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.GameController">
     <children>
-        <MazeDisplayer fx:id="mazeDisplayer"  onMouseClicked="#mouseClicked" onMouseDragged="#mouseDragged"  height="412.0" layoutY="40.0" width="757.0" />
+        <MazeDisplayer fx:id="mazeDisplayer"  onMouseClicked="#mouseClicked" onMouseDragged="#mouseDragged" onScroll="#setOnScroll"  height="412.0" layoutY="40.0" width="757.0" />
 
         <Button id="ShowSolution" layoutX="600.0" layoutY="14.0" mnemonicParsing="false" onAction="#ShowSolution" prefHeight="26.0" prefWidth="142.0" text="Show Solution" />
         <MenuBar id="menuBar" layoutX="17.0" layoutY="14.0" prefHeight="26.0" prefWidth="570.0">

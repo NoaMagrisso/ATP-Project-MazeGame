@@ -19,6 +19,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.transform.Scale;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -39,6 +40,7 @@ public class GameController extends AController implements Observer {
     private String chooserEnvironmentPath;
     private int rows;
     private int cols;
+    private double zoomVal;
     @FXML
     public javafx.scene.control.CheckMenuItem BestFirstSearch;
     public javafx.scene.control.CheckMenuItem BreathFirstSearch;
@@ -325,6 +327,25 @@ public class GameController extends AController implements Observer {
     }
 
 
-    public void setOnScroll(ScrollEvent scrollEvent) {
+    public void setOnScroll(ScrollEvent scroll) {
+        if (scroll.isControlDown()) {
+            if (scroll.getDeltaY() >= 0)
+                zoomVal = 1.05;
+            else
+                zoomVal = 0.95;
+
+            settingScale(zoomVal, scroll);
+            scroll.consume();
+        }
+    }
+
+    private void settingScale(double zoomVal, ScrollEvent scroll) {
+        Scale myScale = new Scale();
+        myScale.setPivotX(scroll.getX());
+        myScale.setPivotY(scroll.getY());
+        myScale.setX(mazeDisplayer.getScaleX() * zoomVal);
+        myScale.setY(mazeDisplayer.getScaleY() * zoomVal);
+        mazeDisplayer.helperScroll(myScale);
+
     }
 }

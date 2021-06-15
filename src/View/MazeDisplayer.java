@@ -10,6 +10,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.transform.Scale;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -79,10 +80,11 @@ public class MazeDisplayer extends Canvas {
                 GraphicsContext graphicsContext = getGraphicsContext2D();
                 graphicsContext.clearRect(0, 0, canvasWidth, canvasHeight);
                 drawMazeWalls(graphicsContext, cellHeight, cellWidth, rows, cols, wallImage, goalImage, startImage, wayImage);
-                drawPlayer(graphicsContext, cellHeight, cellWidth, startImage);
                 //drawSolution(graphicsContext,cellHeight,cellWidth);
-                if (solution != null)
+                if (solution != null) {
                     drawSolution(solutionImage ,graphicsContext, cellHeight, cellWidth, solution);
+                }
+                drawPlayer(graphicsContext, cellHeight, cellWidth, startImage);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -137,5 +139,27 @@ public class MazeDisplayer extends Canvas {
         double y = getPlayerRow() * cellHeight;
         graphicsContext.drawImage(player, x, y, cellWidth, cellHeight);
     }
+
+
+    public void helperScroll(Scale myScale){
+        this.getTransforms().add(myScale);
+    }
+
+//    public void zoomIn() {
+//        synchronized (this.lockMyZoom) {
+//            valueMyZoom += this.gap;
+//        }
+//        draw();
+//    }
+//
+//    public void zoomOut() {
+//        synchronized (this.lockMyZoom) {
+//            if (((this.getHeight() + valueMyZoom) / this.mazeMatrix.length > 0) && (this.getWidth() + valueMyZoom) / this.mazeMatrix[0].length > 0)
+//            valueMyZoom -= this.gap;
+//        }
+//        draw();
+//    }
+
+
 
 }
