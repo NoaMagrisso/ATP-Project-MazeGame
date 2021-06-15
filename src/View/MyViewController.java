@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -19,9 +20,10 @@ public class MyViewController extends AController{
     public AnchorPane pane;
     private MyViewModel myViewModel;
 
-    public void initialize(Stage primaryStage, MyViewModel viewModel) {
+    public void initialize(Stage primaryStage, MyViewModel viewModel, MediaPlayer startMusic) {
         this.stage = primaryStage;
         this.myViewModel = viewModel;
+        this.startMusic = startMusic;
 
         //button.prefHeightProperty().bind(pane.heightProperty().divide(10));
         //button.prefWidthProperty().bind(pane.widthProperty().divide(10));
@@ -69,7 +71,7 @@ public class MyViewController extends AController{
 //            stage.setHeight(rectangleSizes.getHeight());
 
             SizeOfMazeController sizeOfMazeController = sizeOfMazeFXMLLoader.getController();
-            sizeOfMazeController.initialize(this.stage, this.myViewModel, null, null);
+            sizeOfMazeController.initialize(this.stage, this.myViewModel, null, null, this.startMusic);
             //stage.setResizable(false);
             stage.show();
 

@@ -9,9 +9,12 @@ import javafx.beans.property.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Scale;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
@@ -22,6 +25,7 @@ public class MazeDisplayer extends Canvas {
     private Solution solution;
     private int playerRow = 0;
     private int playerCol = 0;
+    public Thread musicThread;
 
     private Position goal;
     private volatile Object Factor = new Object();
@@ -145,20 +149,20 @@ public class MazeDisplayer extends Canvas {
         this.getTransforms().add(myScale);
     }
 
-//    public void zoomIn() {
-//        synchronized (this.lockMyZoom) {
-//            valueMyZoom += this.gap;
-//        }
-//        draw();
-//    }
+//    public void playMusic(){
 //
-//    public void zoomOut() {
-//        synchronized (this.lockMyZoom) {
-//            if (((this.getHeight() + valueMyZoom) / this.mazeMatrix.length > 0) && (this.getWidth() + valueMyZoom) / this.mazeMatrix[0].length > 0)
-//            valueMyZoom -= this.gap;
-//        }
-//        draw();
+//        Media media = new Media(new File("resources\\music\\musicplayer.mp3").toURI().toString());
+//        MediaPlayer startMusic = new MediaPlayer(media);
+//        startMusic.setVolume(0.4);
+//        startMusic.play();
+//        musicThread = new Thread(()->{
+//
+//
+//
+//        });
+//
 //    }
+
 
 
 

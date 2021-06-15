@@ -12,11 +12,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.util.Optional;
+
+
 
 public class Main extends Application {
 
@@ -24,6 +29,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+
+
+        Media media = new Media(new File("resources\\music\\musicplayer.mp3").toURI().toString());
+        MediaPlayer startMusic = new MediaPlayer(media);
+        startMusic.setVolume(0.2);
+        startMusic.setAutoPlay(true);
+        startMusic.setCycleCount(MediaPlayer.INDEFINITE);
 
         myModel = new MyModel();
         MyViewModel myViewModel = new MyViewModel(myModel);
@@ -43,7 +55,7 @@ public class Main extends Application {
 
         MyViewController myViewController = myViewFXMLLoader.getController();
         myViewController.setResizeEvent(scene);
-        myViewController.initialize(primaryStage,myViewModel);
+        myViewController.initialize(primaryStage,myViewModel, startMusic);
 
         try {
             primaryStage.getIcons().add(new Image(new FileInputStream("resources\\images\\tomPic.JPG")));

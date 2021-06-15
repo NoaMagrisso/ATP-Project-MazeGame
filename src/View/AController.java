@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -21,6 +22,7 @@ public abstract class AController {
     protected Stage stage;
     protected Rectangle2D rectangleSizes = Screen.getPrimary().getBounds();
     protected MyViewModel myViewModel;
+    protected MediaPlayer startMusic;
 
     public void Home(ActionEvent actionEvent) {
         try {
@@ -31,7 +33,7 @@ public abstract class AController {
             stage.setScene(myViewScene);
 
             MyViewController myViewController = myViewFXMLLoader.getController();
-            myViewController.initialize(this.stage, this.myViewModel);
+            myViewController.initialize(this.stage, this.myViewModel, startMusic);
             stage.setResizable(false);
             stage.show();
 
@@ -53,6 +55,13 @@ public abstract class AController {
                 }
             }
         });
+    }
+
+    public void SetMute(ActionEvent actionEvent) {
+        if (this.startMusic.getVolume() != 0)
+            this.startMusic.setVolume(0);
+        else
+            this.startMusic.setVolume(2);
     }
 
 }

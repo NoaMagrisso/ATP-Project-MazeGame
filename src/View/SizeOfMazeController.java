@@ -13,6 +13,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -44,11 +45,12 @@ public class SizeOfMazeController extends AController{
     private int rows;
     private int cols;
 
-    public void initialize(Stage stage, MyViewModel myViewModel, String chooserCharacterPath, String chooserEnvironmentPath) throws FileNotFoundException {
+    public void initialize(Stage stage, MyViewModel myViewModel, String chooserCharacterPath, String chooserEnvironmentPath, MediaPlayer startMusic) throws FileNotFoundException {
         this.stage = stage;
         this.myViewModel = myViewModel;
         this.chooserCharacterPath = chooserCharacterPath;
         this.chooserEnvironmentPath = chooserEnvironmentPath;
+        this.startMusic = startMusic;
     }
 
     public void StartGame(ActionEvent actionEvent) {
@@ -65,7 +67,7 @@ public class SizeOfMazeController extends AController{
 //            stage.setHeight(rectangleSizes.getHeight());
 
             GameController gameController = gameFXMLLoader.getController();
-            gameController.initialize(this.stage, this.myViewModel, chooserCharacterPath, chooserEnvironmentPath, Integer.parseInt(textField_mazeRows.getText()), Integer.parseInt(textField_mazeCols.getText()));
+            gameController.initialize(this.stage, this.myViewModel, chooserCharacterPath, chooserEnvironmentPath, Integer.parseInt(textField_mazeRows.getText()), Integer.parseInt(textField_mazeCols.getText()), this.startMusic);
             stage.setResizable(false);
             stage.show();
 

@@ -19,6 +19,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
+
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.transform.Scale;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -41,6 +43,7 @@ public class GameController extends AController implements Observer {
     private int rows;
     private int cols;
     private double zoomVal;
+
     @FXML
     public javafx.scene.control.CheckMenuItem BestFirstSearch;
     public javafx.scene.control.CheckMenuItem BreathFirstSearch;
@@ -55,15 +58,18 @@ public class GameController extends AController implements Observer {
     StringProperty updatePlayerRow = new SimpleStringProperty();
     StringProperty updatePlayerCol = new SimpleStringProperty();
 
+
+
     public static int numSaveMaze = 1;
 
-    public void initialize(Stage stage, MyViewModel myViewModel, String chooserCharacterPath, String chooserEnvironmentPath, int rows, int cols) {
+    public void initialize(Stage stage, MyViewModel myViewModel, String chooserCharacterPath, String chooserEnvironmentPath, int rows, int cols, MediaPlayer startMusic) {
         this.stage = stage;
         this.myViewModel = myViewModel;
         this.chooserCharacterPath = chooserCharacterPath;
         this.chooserEnvironmentPath = chooserEnvironmentPath;
         this.rows = rows;
         this.cols = cols;
+        this.startMusic = startMusic;
 
         myViewModel.addObserver(this);
 
@@ -71,6 +77,9 @@ public class GameController extends AController implements Observer {
 
 
         myViewModel.generateMaze(this.rows, this.cols);
+
+
+
 
 //        if (myViewModel.getMaze() == null) {
 //            System.out.println("hhhhhhhhhhhhhh");
@@ -101,7 +110,7 @@ public class GameController extends AController implements Observer {
 //            stage.setHeight(rectangleSizes.getHeight());
 
             MyViewController myViewController = myViewFXMLLoader.getController();
-            myViewController.initialize(this.stage, this.myViewModel);
+            myViewController.initialize(this.stage, this.myViewModel, startMusic);
             stage.show();
 
         } catch (Exception e) {
@@ -163,11 +172,13 @@ public class GameController extends AController implements Observer {
 
     private void playerMoved() {
         setPlayerPosition(myViewModel.getPlayerRow(), myViewModel.getPlayerCol());
+
     }
 
 
     private void mazeGenerated() {
         mazeDisplayer.drawMaze(myViewModel.getMaze());
+        //mazeDisplayer.playMusic();
     }
 
     public void setPlayerPosition(int row, int col){

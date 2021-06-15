@@ -24,8 +24,8 @@
                         <MenuItem onAction="#Load" mnemonicParsing="false" text="Load" />
                     </items>
                 </Menu>
-                <Menu disable="true" fx:id="Options" text="Options">
-                    <Menu fx:id="Properties" text="Properties">
+                <Menu disable="false" fx:id="Options" text="Options">
+                    <Menu fx:id="Properties" text="Properties" disable="true">
                         <Menu text="Choose your Solving Algorithm">
                             <CheckMenuItem fx:id="DepthFirstSearch" text="DepthFirstSearch" onAction="#solverDepthFirstSearch"/>
                             <CheckMenuItem fx:id="BreathFirstSearch" text="BreathFirstSearch" onAction="#solverBreadthFirstSearch"/>
@@ -40,7 +40,7 @@
                             <MenuItem fx:id="threadPool" onAction="#ThreadPool"/>
                         </Menu>
                     </Menu>
-                    <RadioMenuItem fx:id="menu_Options_Mute" mnemonicParsing="false" text="Mute" disable="true"/>
+                    <RadioMenuItem fx:id="menu_Options_Mute" mnemonicParsing="false" text="Mute" onAction="#SetMute"/>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Exit">
                     <items>
