@@ -38,7 +38,7 @@
                      <MenuItem fx:id="threadPool" onAction="#ThreadPool" />
                   </Menu>
                </Menu>
-               <RadioMenuItem fx:id="menu_Options_Mute" disable="true" mnemonicParsing="false" text="Mute" />
+               <RadioMenuItem fx:id="menu_Options_Mute" disable="false" mnemonicParsing="false" text="Mute" onAction="#SetMute"/>
             </Menu>
             <Menu mnemonicParsing="false" text="Exit">
                <items>
