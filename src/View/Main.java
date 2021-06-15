@@ -41,10 +41,13 @@ public class Main extends Application {
         MyViewModel myViewModel = new MyViewModel(myModel);
         myModel.addObserver(myViewModel);
 
+
         FXMLLoader myViewFXMLLoader = new FXMLLoader();
         Parent myViewRoot = myViewFXMLLoader.load(getClass().getResource("MyView.fxml").openStream());
+       // myViewRoot.getStylesheets().add(getClass().getResource("MyView.css").toExternalForm());
         primaryStage.setTitle("Maze Game");
         Scene scene = new Scene(myViewRoot);
+        scene.getStylesheets().add(getClass().getResource("MyView.css").toExternalForm());
         //primaryStage.setMaximized(true);
         //primaryStage.setResizable(false);
 

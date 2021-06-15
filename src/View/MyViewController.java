@@ -63,7 +63,7 @@ public class MyViewController extends AController{
             FXMLLoader sizeOfMazeFXMLLoader = new FXMLLoader();
             Parent sizeOfMaze = sizeOfMazeFXMLLoader.load(getClass().getResource("SizeOfMaze.fxml").openStream());
             Scene sizeOfMazeScene = new Scene(sizeOfMaze);
-
+            sizeOfMazeScene.getStylesheets().add(getClass().getResource("SizeOfMaze.css").toExternalForm());
             stage.setScene(sizeOfMazeScene);
 //            stage.setX(rectangleSizes.getMinX());
 //            stage.setY(rectangleSizes.getMinY());
@@ -86,7 +86,6 @@ public class MyViewController extends AController{
         //button.prefWidthProperty().bind(pane.widthProperty());
         //button.prefHeightProperty().bind(pane.heightProperty());
         scene.widthProperty().addListener((observable, oldValue, newValue) -> {
-            button.setPrefHeight(scene.getHeight()*0.0725);
             button.setPrefWidth(scene.getWidth()*0.17);
            // button.setMaxHeight(50);
            // button.setMaxWidth(50);
@@ -96,9 +95,14 @@ public class MyViewController extends AController{
         });
 
 
+        scene.heightProperty().addListener((observable, oldValue, newValue) -> {
+            button.setPrefHeight(scene.getHeight()*0.0725);
 
-
-        scene.heightProperty().addListener((observable, oldValue, newValue) -> { button.prefHeightProperty().bind(pane.heightProperty()); });
+        });
+//        button.setTranslateX(10);
+//        button.setTranslateY(20);
+        button.setLayoutX(button.getLayoutX()*1.05);
+        button.setLayoutY(button.getLayoutY()*1.05);
     }
 
 
