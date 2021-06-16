@@ -2,6 +2,7 @@
 
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -9,38 +10,37 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <?import View.MazeDisplayer?>
-<?import javafx.scene.control.CheckMenuItem?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#KeyPressed" onScroll="#setOnScroll" prefHeight="450.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.GameController">
     <children>
-        <MazeDisplayer fx:id="mazeDisplayer"  onMouseClicked="#mouseClicked" onMouseDragged="#mouseDragged" onScroll="#setOnScroll"  height="412.0" layoutY="40.0" width="757.0" />
+        <MazeDisplayer  fx:id="mazeDisplayer" height="426.0" layoutY="26.0" onMouseClicked="#mouseClicked" onMouseDragged="#mouseDragged" onScroll="#setOnScroll" width="757.0" />
 
-        <Button id="ShowSolution" layoutX="600.0" layoutY="14.0" mnemonicParsing="false" onAction="#ShowSolution" prefHeight="26.0" prefWidth="142.0" text="Show Solution" />
-        <MenuBar id="menuBar" layoutX="17.0" layoutY="14.0" prefHeight="26.0" prefWidth="570.0">
+        <Button id="ShowSolution" disable="true" layoutX="729.0" layoutY="1.0" mnemonicParsing="false" onAction="#ShowSolution" prefHeight="26.0" prefWidth="22.0" text="Show Solution" visible="false" />
+        <MenuBar id="menuBar" layoutX="-3.0" layoutY="1.0" prefHeight="26.0" prefWidth="763.0">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
-                        <MenuItem onAction="#New" mnemonicParsing="false" text="New" />
-                        <MenuItem onAction="#Save" mnemonicParsing="false" text="Save" />
-                        <MenuItem onAction="#Load" mnemonicParsing="false" text="Load" />
+                        <MenuItem mnemonicParsing="false" onAction="#New" text="New" />
+                        <MenuItem mnemonicParsing="false" onAction="#Save" text="Save" />
+                        <MenuItem mnemonicParsing="false" onAction="#Load" text="Load" />
                     </items>
                 </Menu>
-                <Menu disable="false" fx:id="Options" text="Options">
-                    <Menu fx:id="Properties" text="Properties" disable="true">
+                <Menu fx:id="Options" disable="false" text="Options">
+                    <Menu fx:id="Properties" disable="true" text="Properties">
                         <Menu text="Choose your Solving Algorithm">
-                            <CheckMenuItem fx:id="DepthFirstSearch" text="DepthFirstSearch" onAction="#solverDepthFirstSearch"/>
-                            <CheckMenuItem fx:id="BreathFirstSearch" text="BreathFirstSearch" onAction="#solverBreadthFirstSearch"/>
-                            <CheckMenuItem fx:id="BestFirstSearch" text="BestFirstSearch" onAction="#solverBestFirstSearch"/>
+                            <CheckMenuItem fx:id="DepthFirstSearch" onAction="#solverDepthFirstSearch" text="DepthFirstSearch" />
+                            <CheckMenuItem fx:id="BreathFirstSearch" onAction="#solverBreadthFirstSearch" text="BreathFirstSearch" />
+                            <CheckMenuItem fx:id="BestFirstSearch" onAction="#solverBestFirstSearch" text="BestFirstSearch" />
                         </Menu>
                         <Menu text="Choose your Generator Algorithm">
-                            <CheckMenuItem fx:id="EmptyMazeGenerator" text="EmptyMazeGenerator" onAction="#generatorEmptyMazeGenerator"/>
-                            <CheckMenuItem fx:id="SimpleMazeGenerator" text="SimpleMazeGenerator" onAction="#generatorSimpleMazeGenerator"/>
-                            <CheckMenuItem fx:id="MyMazeGenerator" text="MyMazeGenerator" onAction="#generatorMyMazeGenerator"/>
+                            <CheckMenuItem fx:id="EmptyMazeGenerator" onAction="#generatorEmptyMazeGenerator" text="EmptyMazeGenerator" />
+                            <CheckMenuItem fx:id="SimpleMazeGenerator" onAction="#generatorSimpleMazeGenerator" text="SimpleMazeGenerator" />
+                            <CheckMenuItem fx:id="MyMazeGenerator" onAction="#generatorMyMazeGenerator" text="MyMazeGenerator" />
                         </Menu>
                         <Menu text="Number Of Threads">
-                            <MenuItem fx:id="threadPool" onAction="#ThreadPool"/>
+                            <MenuItem fx:id="threadPool" onAction="#ThreadPool" />
                         </Menu>
                     </Menu>
-                    <RadioMenuItem fx:id="menu_Options_Mute" mnemonicParsing="false" text="Mute" onAction="#SetMute"/>
+                    <RadioMenuItem fx:id="menu_Options_Mute" mnemonicParsing="false" onAction="#SetMute" text="Mute" />
                 </Menu>
                 <Menu mnemonicParsing="false" text="Exit">
                     <items>

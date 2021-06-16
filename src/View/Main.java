@@ -61,7 +61,7 @@ public class Main extends Application {
         myViewController.initialize(primaryStage,myViewModel, startMusic);
 
         try {
-            primaryStage.getIcons().add(new Image(new FileInputStream("resources\\images\\tomPic.JPG")));
+            primaryStage.getIcons().add(new Image(new FileInputStream("resources\\images\\pack516.jpg")));
         } catch (Exception e) {
             e.printStackTrace();
         }

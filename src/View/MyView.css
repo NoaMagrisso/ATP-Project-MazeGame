@@ -1,13 +1,13 @@
 .root{
-    -fx-background-color: bisque;
+    -fx-background-color: DarkGoldenRod;
 }
 
 Button {
     -fx-text-fill: white;
-    -fx-font-family: "calibri";
-    -fx-font-size: 30px;
+    -fx-font-family: "Berlin Sans FB Bold";
+    -fx-font-size: 20px;
     -fx-font-weight: bold;
-    -fx-background-color: orange;
+    -fx-background-color: GoldenRod;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
 }
 

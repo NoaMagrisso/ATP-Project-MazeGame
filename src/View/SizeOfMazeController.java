@@ -25,7 +25,7 @@ import java.io.IOException;
 
 public class SizeOfMazeController extends AController{
 
-
+    //-fx-background-insets: 0 0 -1 0, 0, 1, 2;-fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; /* 4 8 4 8 */
     public TextField textField_mazeRows;
     public TextField textField_mazeCols;
     public Menu Options;
@@ -40,6 +40,9 @@ public class SizeOfMazeController extends AController{
     public RadioMenuItem menu_Options_Mute;
     public ImageView imageAbout;
     public MazeDisplayer ImageDisplayer;
+    public Label labelRow;
+    public Label labelCol;
+    public ToggleButton buttonStartGame;
     private String chooserCharacterPath;
     private String chooserEnvironmentPath;
     private int rows;
