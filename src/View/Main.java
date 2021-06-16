@@ -7,6 +7,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -14,6 +15,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -26,36 +28,74 @@ import java.util.Optional;
 public class Main extends Application {
 
     public static MyModel myModel;
+    public static Stage stageMain;
+    public static Scene scene;
+    public static MediaPlayer startMusic;
+    public static MyViewController myViewController;
+    public static MyViewModel myViewModel;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-
         Media media = new Media(new File("resources\\music\\musicplayer.mp3").toURI().toString());
-        MediaPlayer startMusic = new MediaPlayer(media);
+        startMusic = new MediaPlayer(media);
         startMusic.setVolume(0.2);
         startMusic.setAutoPlay(true);
         startMusic.setCycleCount(MediaPlayer.INDEFINITE);
 
+        //-------------------------------------------------
+
+//        Media media = new Media(new File("resources\\video\\finalVideo.mp4").toURI().toString());
+//
+//        MediaPlayer mediaPlayer = new MediaPlayer(media);
+//        MediaView mediaView = new MediaView(mediaPlayer);
+//        mediaPlayer.setAutoPlay(true);
+//
+//        //setting group and scene
+//        Group root = new Group();
+//        root.getChildren().add(mediaView);
+//        Scene scene2 = new Scene(root,500,400);
+//        primaryStage.setScene(scene2);
+//        primaryStage.setTitle("Playing video");
+//        primaryStage.show();
+//        primaryStage.setMaximized(true);
+//
+//        javafx.scene.media.MediaPlayer player = new javafx.scene.media.MediaPlayer(media);
+//        mediaPlayer.setOnEndOfMedia(new Runnable() {
+//            @Override
+//            public void run() {
+//                mediaPlayer.stop();
+//                primaryStage.close();
+//            }
+//        });
+
+//        while (mediaPlayer.getOnEndOfMedia() != null && mediaPlayer.getStatus() != MediaPlayer.Status.STOPPED) {
+//            System.out.println("noa");
+//        }
+
+        //-------------------------------------------------
+
         myModel = new MyModel();
-        MyViewModel myViewModel = new MyViewModel(myModel);
+        myViewModel = new MyViewModel(myModel);
         myModel.addObserver(myViewModel);
 
         FXMLLoader myViewFXMLLoader = new FXMLLoader();
         Parent myViewRoot = myViewFXMLLoader.load(getClass().getResource("MyView.fxml").openStream());
         primaryStage.setTitle("Maze Game");
-        Scene scene = new Scene(myViewRoot);
+        scene = new Scene(myViewRoot, 600, 400);
         //primaryStage.setMaximized(true);
         //primaryStage.setResizable(false);
-
-        //resize(scene);
-
+//
+//        //resize(scene);
+//
         primaryStage.setScene(scene);
 
 
-        MyViewController myViewController = myViewFXMLLoader.getController();
+        myViewController = myViewFXMLLoader.getController();
         myViewController.setResizeEvent(scene);
-        myViewController.initialize(primaryStage,myViewModel, startMusic);
+        //myViewController.initialize(primaryStage,myViewModel, startMusic);
+        myViewController.initialize(primaryStage,myViewModel, null);
+
 
         try {
             primaryStage.getIcons().add(new Image(new FileInputStream("resources\\images\\tomPic.JPG")));
@@ -64,6 +104,7 @@ public class Main extends Application {
         }
 
         SetStageCloseEvent(primaryStage);
+        stageMain = primaryStage;
         primaryStage.show();
 
     }
@@ -95,5 +136,15 @@ public class Main extends Application {
 
             }
         });
+    }
+
+    public static void restart() {
+        //stageMain.close();
+        startMusic.setVolume(0.2);
+        stageMain.setScene(scene);
+        myViewController.initialize(stageMain,myViewModel, null);
+        SetStageCloseEvent(stageMain);
+        stageMain.setMaximized(true);
+        stageMain.show();
     }
 }

@@ -6,11 +6,14 @@ import algorithms.search.AState;
 import algorithms.search.MazeState;
 import algorithms.search.Solution;
 import javafx.beans.property.*;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Scale;
 
@@ -142,6 +145,10 @@ public class MazeDisplayer extends Canvas {
         double x = getPlayerCol() * cellWidth;
         double y = getPlayerRow() * cellHeight;
         graphicsContext.drawImage(player, x, y, cellWidth, cellHeight);
+    }
+
+    public Position getGoal() {
+        return this.goal;
     }
 
 
