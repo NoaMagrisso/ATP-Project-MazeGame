@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -20,7 +21,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 
+import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.transform.Scale;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -185,6 +188,8 @@ public class GameController extends AController implements Observer {
         mazeDisplayer.setPlayerPosition(row, col);
         setUpdatePlayerRow(row);
         setUpdatePlayerCol(col);
+        if (this.mazeDisplayer.getGoal().getRowIndex() == row && this.mazeDisplayer.getGoal().getColumnIndex() == col)
+            arriveTheGoal();
     }
 
     public void setUpdatePlayerRow(int updatePlayerRow) {
@@ -300,13 +305,15 @@ public class GameController extends AController implements Observer {
 
     public void mouseDragged(MouseEvent mouseEvent) {
         if(myViewModel.getMaze() != null) {
+
             double changePositionOnLineX = helper(Math.max(myViewModel.getMaze().getMatrix()[0].length, myViewModel.getMaze().getMatrix().length),mazeDisplayer.getHeight(),
                     myViewModel.getMaze().getMatrix().length,mouseEvent.getX(),mazeDisplayer.getWidth() / Math.max(myViewModel.getMaze().getMatrix()[0].length, myViewModel.getMaze().getMatrix().length));
 
-
-
             double changePositionOnLineY = helper(Math.max(myViewModel.getMaze().getMatrix()[0].length, myViewModel.getMaze().getMatrix().length),mazeDisplayer.getWidth(),
                     myViewModel.getMaze().getMatrix()[0].length,mouseEvent.getY(),mazeDisplayer.getHeight() / Math.max(myViewModel.getMaze().getMatrix()[0].length, myViewModel.getMaze().getMatrix().length));
+
+            if (this.mazeDisplayer.getGoal().getRowIndex() == changePositionOnLineY && this.mazeDisplayer.getGoal().getColumnIndex() == changePositionOnLineX)
+                arriveTheGoal();
 
             if (changePositionOnLineX == myViewModel.getPlayerCol() && changePositionOnLineY < myViewModel.getPlayerRow())
                 myViewModel.updatePlayerLocation(KeyCode.NUMPAD8);
@@ -328,11 +335,42 @@ public class GameController extends AController implements Observer {
         }
     }
 
+
+    public void arriveTheGoal() {
+
+        Main.startMusic.setVolume(0);
+        //if ((playerRow == this.goal.getRowIndex() - 1) && playerCol == this.goal.getColumnIndex()) {}
+        Media media = new Media(new File("resources\\video\\finalVideo.mp4").toURI().toString());
+
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        MediaView mediaView = new MediaView(mediaPlayer);
+        mediaPlayer.setAutoPlay(true);
+
+        //setting group and scene
+        Group root = new Group();
+        root.getChildren().add(mediaView);
+        Scene scene2 = new Scene(root,500,400);
+        this.stage.setScene(scene2);
+        this.stage.setTitle("Playing video");
+        this.stage.show();
+        this.stage.setMaximized(true);
+
+        javafx.scene.media.MediaPlayer player = new javafx.scene.media.MediaPlayer(media);
+        mediaPlayer.setOnEndOfMedia(new Runnable() {
+
+            @Override
+            public void run() {
+                mediaPlayer.stop();
+                Main.restart();
+            }
+        });
+    }
+
     public void mouseClicked(MouseEvent mouseEvent) {
         mazeDisplayer.requestFocus();
     }
 
-    private  double helper(int maxsize, double mazedisplayerSize, int mazeSize,double mouseEvent,double number){
+    private double helper(int maxsize, double mazedisplayerSize, int mazeSize,double mouseEvent,double number){
         double result = (int) ((mouseEvent) / (number) - ((mazedisplayerSize / 2 - ((mazedisplayerSize/maxsize) * mazeSize / 2)) / (mazedisplayerSize/maxsize)));
         return result;
     }

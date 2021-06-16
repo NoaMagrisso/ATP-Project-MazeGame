@@ -1,0 +1,26 @@
+Index: src/ViewModel/MyViewModel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ViewModel;\r\n\r\nimport Model.IModel;\r\nimport Model.MovementDirection;\r\nimport algorithms.mazeGenerators.Maze;\r\nimport algorithms.search.Solution;\r\nimport javafx.scene.input.KeyCode;\r\nimport javafx.scene.input.KeyEvent;\r\n\r\nimport java.io.File;\r\nimport java.io.IOException;\r\nimport java.util.Observable;\r\nimport java.util.Observer;\r\n\r\npublic class MyViewModel extends Observable implements Observer{\r\n\r\n    private IModel model;\r\n\r\n    public MyViewModel(IModel model) {\r\n        this.model = model;\r\n    }\r\n\r\n    @Override\r\n    public void update(Observable o, Object arg) {\r\n        setChanged();\r\n        notifyObservers(arg);\r\n    }\r\n\r\n    public Maze getMaze(){\r\n        return this.model.getMaze();\r\n    }\r\n\r\n    public int getPlayerRow(){\r\n        return this.model.getPlayerRow();\r\n    }\r\n\r\n    public int getPlayerCol(){\r\n        return this.model.getPlayerCol();\r\n    }\r\n\r\n    public void generateMaze(int rows, int cols){\r\n        this.model.generateMaze(rows, cols);\r\n    }\r\n\r\n    public void setMaze(Maze newMaze) {\r\n        this.model.setMaze(newMaze);\r\n    }\r\n\r\n    public void stop() {\r\n        model.stop();\r\n    }\r\n\r\n    public void updatePlayerLocation(KeyEvent keyEvent) {\r\n\r\n        MovementDirection direction;\r\n        switch (keyEvent.getCode()){\r\n            case NUMPAD8 -> direction = MovementDirection.UP;\r\n            case DIGIT8 -> direction = MovementDirection.UP;\r\n            case NUMPAD2 -> direction = MovementDirection.DOWN;\r\n            case DIGIT2 -> direction = MovementDirection.DOWN;\r\n            case NUMPAD4 -> direction = MovementDirection.LEFT;\r\n            case DIGIT4 -> direction = MovementDirection.LEFT;\r\n            case NUMPAD6 -> direction = MovementDirection.RIGHT;\r\n            case DIGIT6 -> direction = MovementDirection.RIGHT;\r\n            case NUMPAD7 -> direction = MovementDirection.UPLEFT;\r\n            case DIGIT7 -> direction = MovementDirection.UPLEFT;\r\n            case NUMPAD9 -> direction = MovementDirection.UPRIGHT;\r\n            case DIGIT9 -> direction = MovementDirection.UPRIGHT;\r\n            case NUMPAD3 -> direction = MovementDirection.DOWNRIGHT;\r\n            case DIGIT3 -> direction = MovementDirection.DOWNRIGHT;\r\n            case NUMPAD1 -> direction = MovementDirection.DOWNLEFT;\r\n            case DIGIT1 -> direction = MovementDirection.DOWNLEFT;\r\n\r\n            default -> {\r\n                // no need to move the player...\r\n                return;\r\n            }\r\n        }\r\n        model.updatePlayerLocation(direction);\r\n    }\r\n\r\n    public Solution getSolution(){\r\n        return model.getMazeSolution();\r\n    }\r\n\r\n    public void solveMaze(){\r\n        model.solveMaze();\r\n    }\r\n\r\n    public void SaveGame(File saveFile) throws IOException {\r\n        model.saveMaze(saveFile.getPath());\r\n    }\r\n\r\n    public void loadGame(File loadFile) throws IOException, ClassNotFoundException {\r\n        model.loadMaze(loadFile);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/ViewModel/MyViewModel.java b/src/ViewModel/MyViewModel.java
+--- a/src/ViewModel/MyViewModel.java	(revision dc7b07aa51a4f21f1cdcc7d668cf37a9c7ea6f5b)
++++ b/src/ViewModel/MyViewModel.java	(date 1623771757362)
+@@ -4,6 +4,7 @@
+ import Model.MovementDirection;
+ import algorithms.mazeGenerators.Maze;
+ import algorithms.search.Solution;
++import javafx.event.EventType;
+ import javafx.scene.input.KeyCode;
+ import javafx.scene.input.KeyEvent;
+ 
+@@ -50,6 +51,7 @@
+         model.stop();
+     }
+ 
++
+     public void updatePlayerLocation(KeyEvent keyEvent) {
+ 
+         MovementDirection direction;
