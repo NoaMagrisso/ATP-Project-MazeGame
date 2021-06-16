@@ -33,6 +33,7 @@ public class Main extends Application {
     public static MediaPlayer startMusic;
     public static MyViewController myViewController;
     public static MyViewModel myViewModel;
+    public static Parent myViewRoot;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -81,15 +82,14 @@ public class Main extends Application {
 
 
         FXMLLoader myViewFXMLLoader = new FXMLLoader();
-        Parent myViewRoot = myViewFXMLLoader.load(getClass().getResource("MyView.fxml").openStream());
+        myViewRoot = myViewFXMLLoader.load(getClass().getResource("MyView.fxml").openStream());
        // myViewRoot.getStylesheets().add(getClass().getResource("MyView.css").toExternalForm());
         primaryStage.setTitle("Maze Game");
-<<<<<<< HEAD
-        Scene scene = new Scene(myViewRoot);
-        scene.getStylesheets().add(getClass().getResource("MyView.css").toExternalForm());
-=======
+
+        //Scene scene = new Scene(myViewRoot);
         scene = new Scene(myViewRoot, 600, 400);
->>>>>>> NoaBranch
+        scene.getStylesheets().add(getClass().getResource("MyView.css").toExternalForm());
+
         //primaryStage.setMaximized(true);
         //primaryStage.setResizable(false);
 //
@@ -148,10 +148,10 @@ public class Main extends Application {
     public static void restart() {
         //stageMain.close();
         startMusic.setVolume(0.2);
+        stageMain.setMaximized(true);
         stageMain.setScene(scene);
         myViewController.initialize(stageMain,myViewModel, null);
         SetStageCloseEvent(stageMain);
-        stageMain.setMaximized(true);
         stageMain.show();
     }
 }

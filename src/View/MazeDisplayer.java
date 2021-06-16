@@ -86,8 +86,8 @@ public class MazeDisplayer extends Canvas {
                 double cellWidth = canvasWidth / cols;
                 GraphicsContext graphicsContext = getGraphicsContext2D();
                 graphicsContext.clearRect(0, 0, canvasWidth, canvasHeight);
-                drawMazeWalls(graphicsContext, cellHeight, cellWidth, rows, cols, wallImage, goalImage, startImage, wayImage);
                 //drawSolution(graphicsContext,cellHeight,cellWidth);
+                drawMazeWalls(graphicsContext, cellHeight, cellWidth, rows, cols, wallImage, goalImage, startImage, wayImage);
                 if (solution != null) {
                     drawSolution(solutionImage ,graphicsContext, cellHeight, cellWidth, solution);
                 }

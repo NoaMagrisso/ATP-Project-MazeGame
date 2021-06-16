@@ -61,8 +61,8 @@
          </menus>
       </MenuBar>
 
-      <TextField fx:id="textField_mazeRows" layoutX="377.0" layoutY="108.0" prefHeight="48.0" prefWidth="69.0" />
-      <TextField fx:id="textField_mazeCols" layoutX="377.0" layoutY="218.0" prefHeight="48.0" prefWidth="69.0" />
+      <TextField fx:id="textField_mazeRows" layoutX="377.0" layoutY="108.0" prefHeight="48.0" prefWidth="69.0" onKeyTyped="#CheckKeyNumRow" />
+      <TextField fx:id="textField_mazeCols" layoutX="377.0" layoutY="218.0" prefHeight="48.0" prefWidth="69.0" onKeyTyped="#CheckKeyNumCol" />
       <ToggleButton fx:id="buttonStartGame" layoutX="89.0" layoutY="298.0" mnemonicParsing="false" onAction="#StartGame" prefHeight="66.0" prefWidth="401.0" text="Start Game" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS" />
       <Label fx:id="labelRow" layoutX="133.0" layoutY="100.0" prefHeight="66.0" prefWidth="206.0" text="Enter Row number here : " />
       <Label fx:id="labelCol" layoutX="133.0" layoutY="209.0" prefHeight="66.0" prefWidth="206.0" text="Enter column number here :" />

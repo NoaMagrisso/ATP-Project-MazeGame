@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c487c04d-b516-4610-9f08-2300f0019656" name="Default Changelist" comment="adding video if the player has arrived to the goal">
+    <list default="true" id="c487c04d-b516-4610-9f08-2300f0019656" name="Default Changelist" comment="Css styling sheets added, &#10;-Myview.css&#10;-Sizeofmaze.css&#10;-gamecontroller.css&#10;&#10;and icon changed">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_18_43__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_18_43__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ATP-Project-PartC.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP-Project-PartC.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/MyModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MyModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/MazeDisplayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MazeDisplayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/SizeOfMaze.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/SizeOfMaze.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/SizeOfMazeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/SizeOfMazeController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +57,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ATPProjectJAR.jar" />
+    <property name="last_opened_file_path" value="$USER_HOME$/javaFx/javafx-sdk-16/lib" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -70,7 +79,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="View.Main" />
       <module name="ATP-Project-PartC" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\Noa\javafx-sdk-16\lib --add-modules javafx.controls,javafx.media,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\idohe\javaFx\javafx-sdk-16\lib --add-modules javafx.controls,javafx.media,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="View.*" />
@@ -278,6 +287,20 @@
     <MESSAGE value="Music and mute controller option added" />
     <MESSAGE value="adding video if the player has arrived to the goal" />
     <option name="LAST_COMMIT_MESSAGE" value="adding video if the player has arrived to the goal" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/View/MyViewController.java</url>
+          <line>34</line>
+          <properties class="View.MyViewController" method="Start">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

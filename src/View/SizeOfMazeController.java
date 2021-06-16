@@ -2,6 +2,8 @@ package View;
 
 import Server.Configurations;
 import ViewModel.MyViewModel;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,6 +15,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -21,6 +24,7 @@ import java.awt.event.MouseEvent;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Optional;
 
 
 public class SizeOfMazeController extends AController{
@@ -59,6 +63,20 @@ public class SizeOfMazeController extends AController{
     public void StartGame(ActionEvent actionEvent) {
 
         try {
+
+            if ((textField_mazeRows.getText().equals("1") || textField_mazeRows.getText().equals("0")) || (textField_mazeCols.getText().equals("1") || textField_mazeCols.getText().equals("0") || textField_mazeRows.getText().equals("") || textField_mazeCols.getText().equals(""))){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setHeaderText("You need to enter at least 2 as your Row number/ Column number,\nYou can't enter anything else that digits.");
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK) {
+                    return;
+                } else {
+                    return;
+                }
+            }
+
+
+
             FXMLLoader gameFXMLLoader = new FXMLLoader(getClass().getResource("Game.fxml"));
             Parent game = gameFXMLLoader.load();
             Scene gameScene = new Scene(game);
@@ -148,6 +166,26 @@ public class SizeOfMazeController extends AController{
         }
         catch (Exception e) {
             e.printStackTrace();
+        }
+
+
+
+
+    }
+
+    public void CheckKeyNumCol(KeyEvent keyEvent) {
+        if(!keyEvent.getCharacter().matches("[0-9]")){
+
+            keyEvent.consume();
+            textField_mazeCols.backward();
+            textField_mazeCols.deleteNextChar();
+        }
+    }
+    public void CheckKeyNumRow(KeyEvent keyEvent) {
+        if(!keyEvent.getCharacter().matches("[0-9]")){
+            keyEvent.consume();
+            textField_mazeRows.backward();
+            textField_mazeRows.deleteNextChar();
         }
     }
 }

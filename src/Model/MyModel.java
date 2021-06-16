@@ -68,6 +68,7 @@ public class MyModel extends Observable implements IModel{
                         byte[] decompressedMaze = new byte[totalBytes];
                         is.read(decompressedMaze);
                         maze = new Maze(decompressedMaze);
+                        maze.setPositionToZero(getMaze().getGoalPosition());
 
                     } catch (Exception e) {
                         e.printStackTrace();
