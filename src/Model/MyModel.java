@@ -134,7 +134,7 @@ public class MyModel extends Observable implements IModel{
     }
 
     @Override
-    public void saveMaze(String path){    //TODO NOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    public void saveMaze(String path){
         try {
             File newFileToSave = new File(path);
             newFileToSave.createNewFile();
@@ -168,18 +168,14 @@ public class MyModel extends Observable implements IModel{
             Position goalMaze = new Position(1,1);
             int rows = 2;
             int cols = 2;
-            /*read 6 lines from file -- the saved parameters of a maze game */
+
             for (int i = 0 ; i < 6 ; i++) {
                 String line = br.readLine();
                 if (line != null) {
-                    if (i == 0) { //TODO Maybe always 0?
+                    if (i == 0)
                         playerRowIdx = Integer.parseInt(line);
-                        System.out.println(playerRowIdx);
-                    }
-                    if (i == 1) { //TODO Maybe always 0?
+                    if (i == 1)
                         playerColIdx = Integer.parseInt(line);
-                        System.out.println(playerColIdx);
-                    }
                     if (i == 2)
                         goalMazeRow = Integer.parseInt(line);
                     if (i == 3)
@@ -212,9 +208,6 @@ public class MyModel extends Observable implements IModel{
 
             this.playerRow = playerRowIdx;
             this.playerCol = playerColIdx;
-            //this.mazeGoalPosColIdx = playerPosColIdx;
-            //this.mazeGoalPosRowIdx = playerPosRowIdx;
-            //isMazeExist=true;
             setChanged();
             notifyObservers("file loaded");
             System.out.println("Finish Loaded");
@@ -225,51 +218,6 @@ public class MyModel extends Observable implements IModel{
 
     }
 
-
-//    @Override
-//    public void updatePlayerLocation(KeyCode direction) {
-//        switch (direction) {
-//            case NUMPAD8 -> {
-//                if ((playerRow > 0) && ((this.maze.getMatrix()[playerRow - 1][playerCol]) != 1))
-//                    movePlayer(playerRow - 1, playerCol, direction);
-//            }
-//            case NUMPAD2 -> {
-//                if ((playerRow < maze.getRows() - 1) && ((this.maze.getMatrix()[playerRow + 1][playerCol]) != 1))
-//                    movePlayer(playerRow + 1, playerCol, direction);
-//            }
-//            case NUMPAD4 -> {
-//                if ((playerCol > 0) && ((this.maze.getMatrix()[playerRow][playerCol - 1]) != 1))
-//                    movePlayer(playerRow, playerCol - 1, direction);
-//            }
-//            case NUMPAD6 -> {
-//                if ((playerCol < maze.getCols() - 1) && ((this.maze.getMatrix()[playerRow][playerCol + 1]) != 1))
-//                    movePlayer(playerRow, playerCol + 1, direction);
-//            }
-//            case NUMPAD7 -> {
-//                if ((playerRow > 0) && (playerCol > 0) && ((this.maze.getMatrix()[playerRow - 1][playerCol - 1]) != 1))
-//                    if (((this.maze.getMatrix()[playerRow - 1][playerCol]) != 1) || ((this.maze.getMatrix()[playerRow][playerCol - 1]) != 1))
-//                        movePlayer(playerRow - 1, playerCol - 1, direction);
-//            }
-//            case NUMPAD9 -> {
-//                if ((playerRow > 0) && (playerCol < maze.getCols() - 1) && ((this.maze.getMatrix()[playerRow - 1][playerCol + 1]) != 1))
-//                    if (((this.maze.getMatrix()[playerRow - 1][playerCol]) != 1) || ((this.maze.getMatrix()[playerRow][playerCol + 1]) != 1))
-//                        movePlayer(playerRow - 1, playerCol + 1, direction);
-//            }
-//            case NUMPAD3 -> {
-//                if ((playerRow < maze.getRows() - 1) && (playerCol < maze.getCols() - 1) && ((this.maze.getMatrix()[playerRow + 1][playerCol + 1]) != 1))
-//                    if (((this.maze.getMatrix()[playerRow + 1][playerCol]) != 1) || ((this.maze.getMatrix()[playerRow][playerCol + 1]) != 1))
-//                        movePlayer(playerRow + 1, playerCol + 1, direction);
-//            }
-//            case NUMPAD1 -> {
-//                if ((playerRow < maze.getRows() - 1) && (playerCol > 0) && ((this.maze.getMatrix()[playerRow + 1][playerCol - 1]) != 1))
-//                    if (((this.maze.getMatrix()[playerRow + 1][playerCol]) != 1) || ((this.maze.getMatrix()[playerRow][playerCol - 1]) != 1))
-//                        movePlayer(playerRow + 1, playerCol - 1, direction);
-//            }
-//        }
-//        if ((playerRow == maze.getGoalPosition().getRowIndex()) && (playerCol == maze.getGoalPosition().getColumnIndex())) {
-//            //TODO
-//        }
-//    }
 
 
     public void updatePlayerLocation(MovementDirection direction) {
@@ -311,9 +259,6 @@ public class MyModel extends Observable implements IModel{
                         movePlayer(playerRow + 1, playerCol - 1, direction);
             }
         }
-//        if ((playerRow == maze.getGoalPosition().getRowIndex()) && (playerCol == maze.getGoalPosition().getColumnIndex())) {
-//            //TODO
-//        }
     }
 
     @Override
@@ -325,5 +270,4 @@ public class MyModel extends Observable implements IModel{
     public int getPlayerCol() {
         return playerCol;
     }
-
 }

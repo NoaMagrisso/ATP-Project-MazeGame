@@ -72,7 +72,6 @@ public class MyViewModel extends Observable implements Observer{
             case DIGIT1 -> direction = MovementDirection.DOWNLEFT;
 
             default -> {
-                // no need to move the player...
                 return;
             }
         }

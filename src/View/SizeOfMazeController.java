@@ -29,7 +29,6 @@ import java.util.Optional;
 
 public class SizeOfMazeController extends AController{
 
-    //-fx-background-insets: 0 0 -1 0, 0, 1, 2;-fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; /* 4 8 4 8 */
     public TextField textField_mazeRows;
     public TextField textField_mazeCols;
     public Menu Options;
@@ -82,10 +81,6 @@ public class SizeOfMazeController extends AController{
             Scene gameScene = new Scene(game);
 
             stage.setScene(gameScene);
-//            stage.setX(rectangleSizes.getMinX());
-//            stage.setY(rectangleSizes.getMinY());
-//            stage.setWidth(rectangleSizes.getWidth());
-//            stage.setHeight(rectangleSizes.getHeight());
 
             GameController gameController = gameFXMLLoader.getController();
             gameController.initialize(this.stage, this.myViewModel, chooserCharacterPath, chooserEnvironmentPath, Integer.parseInt(textField_mazeRows.getText()), Integer.parseInt(textField_mazeCols.getText()), this.startMusic);
@@ -161,7 +156,6 @@ public class SizeOfMazeController extends AController{
             newStage.setScene(scene);
             newStage.initModality(Modality.APPLICATION_MODAL);
 
-            //newStage.setMinWidth();
             newStage.show();
         }
         catch (Exception e) {

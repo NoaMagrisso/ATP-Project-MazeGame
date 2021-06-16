@@ -35,7 +35,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Optional;
 
-public class GameController extends AController implements Observer {
+public class GameController extends AController implements Observer, IView {
 
     public AnchorPane middlePane;
     public Menu Options;
@@ -75,28 +75,9 @@ public class GameController extends AController implements Observer {
         this.startMusic = startMusic;
 
         myViewModel.addObserver(this);
-
-        System.out.println(this.rows + " " + this.cols);
-
-
         myViewModel.generateMaze(this.rows, this.cols);
-
-
-
-
-//        if (myViewModel.getMaze() == null) {
-//            System.out.println("hhhhhhhhhhhhhh");
-//            myViewModel.generateMaze(this.rows, this.cols);
-//        }
-
-//        mazeDisplayer.widthProperty().bind(middlePane.widthProperty());
-//        mazeDisplayer.heightProperty().bind(middlePane.heightProperty());
-//        mazeDisplayer.cellHeight.bind(middlePane.heightProperty().divide(this.rows));
-//        mazeDisplayer.cellWidth.bind(middlePane.widthProperty().divide(this.cols));
         mazeDisplayer.drawMaze(myViewModel.getMaze());
 
-//        middlePane.scaleXProperty().bind(myScale);
-//        middlePane.scaleYProperty().bind(myScale);
     }
 
     public void Home(ActionEvent actionEvent) {
@@ -107,10 +88,6 @@ public class GameController extends AController implements Observer {
             Scene myViewScene = new Scene(myView);
 
             stage.setScene(myViewScene);
-//            stage.setX(rectangleSizes.getMinX());
-//            stage.setY(rectangleSizes.getMinY());
-//            stage.setWidth(rectangleSizes.getWidth());
-//            stage.setHeight(rectangleSizes.getHeight());
 
             MyViewController myViewController = myViewFXMLLoader.getController();
             myViewController.initialize(this.stage, this.myViewModel, startMusic);
@@ -128,14 +105,11 @@ public class GameController extends AController implements Observer {
         setPlayerPosition(0,0);
         mazeDisplayer.setSolution(null);
 
-        System.out.println("reset the maze...");
 
     }
 
-    public void ShowSolution(ActionEvent actionEvent) { //TODO to show a solution from where I am
-
+    public void ShowSolution(ActionEvent actionEvent) {
         myViewModel.solveMaze();
-
     }
 
     public void update(Observable o, Object arg) {
@@ -155,18 +129,10 @@ public class GameController extends AController implements Observer {
         mazeDisplayer.drawMaze(myViewModel.getMaze());
     }
 
-    private void mazeSolved() {
+    public void mazeSolved() {
         mazeDisplayer.setSolution(myViewModel.getSolution());
     }
 
-    public void generateMaze(ActionEvent actionEvent) {
-    }
-
-    public void solveMaze(ActionEvent actionEvent) {
-    }
-
-    public void openFile(ActionEvent actionEvent) {
-    }
 
     public void KeyPressed(KeyEvent keyEvent) {
         myViewModel.updatePlayerLocation(keyEvent.getCode());
@@ -181,7 +147,6 @@ public class GameController extends AController implements Observer {
 
     private void mazeGenerated() {
         mazeDisplayer.drawMaze(myViewModel.getMaze());
-        //mazeDisplayer.playMusic();
     }
 
     public void setPlayerPosition(int row, int col){
@@ -200,7 +165,7 @@ public class GameController extends AController implements Observer {
         this.updatePlayerCol.set(updatePlayerCol + "");
     }
 
-    public void New() throws IOException { //TODO to improve?
+    public void New() throws IOException {
         this.Home(null);
     }
 
@@ -289,7 +254,7 @@ public class GameController extends AController implements Observer {
             newStage.setScene(scene);
             newStage.initModality(Modality.APPLICATION_MODAL);
 
-            //newStage.setMinWidth();
+
             newStage.show();
         }
         catch (Exception e) {

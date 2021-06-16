@@ -44,38 +44,6 @@ public class Main extends Application {
         startMusic.setAutoPlay(true);
         startMusic.setCycleCount(MediaPlayer.INDEFINITE);
 
-        //-------------------------------------------------
-
-//        Media media = new Media(new File("resources\\video\\finalVideo.mp4").toURI().toString());
-//
-//        MediaPlayer mediaPlayer = new MediaPlayer(media);
-//        MediaView mediaView = new MediaView(mediaPlayer);
-//        mediaPlayer.setAutoPlay(true);
-//
-//        //setting group and scene
-//        Group root = new Group();
-//        root.getChildren().add(mediaView);
-//        Scene scene2 = new Scene(root,500,400);
-//        primaryStage.setScene(scene2);
-//        primaryStage.setTitle("Playing video");
-//        primaryStage.show();
-//        primaryStage.setMaximized(true);
-//
-//        javafx.scene.media.MediaPlayer player = new javafx.scene.media.MediaPlayer(media);
-//        mediaPlayer.setOnEndOfMedia(new Runnable() {
-//            @Override
-//            public void run() {
-//                mediaPlayer.stop();
-//                primaryStage.close();
-//            }
-//        });
-
-//        while (mediaPlayer.getOnEndOfMedia() != null && mediaPlayer.getStatus() != MediaPlayer.Status.STOPPED) {
-//            System.out.println("noa");
-//        }
-
-        //-------------------------------------------------
-
         myModel = new MyModel();
         myViewModel = new MyViewModel(myModel);
         myModel.addObserver(myViewModel);
@@ -83,24 +51,18 @@ public class Main extends Application {
 
         FXMLLoader myViewFXMLLoader = new FXMLLoader();
         myViewRoot = myViewFXMLLoader.load(getClass().getResource("MyView.fxml").openStream());
-       // myViewRoot.getStylesheets().add(getClass().getResource("MyView.css").toExternalForm());
+
         primaryStage.setTitle("Maze Game");
 
-        //Scene scene = new Scene(myViewRoot);
+
         scene = new Scene(myViewRoot, 600, 400);
         scene.getStylesheets().add(getClass().getResource("MyView.css").toExternalForm());
 
-        //primaryStage.setMaximized(true);
-        //primaryStage.setResizable(false);
-//
-//        //resize(scene);
-//
         primaryStage.setScene(scene);
 
 
         myViewController = myViewFXMLLoader.getController();
         myViewController.setResizeEvent(scene);
-        //myViewController.initialize(primaryStage,myViewModel, startMusic);
         myViewController.initialize(primaryStage,myViewModel, null);
 
 
@@ -146,7 +108,7 @@ public class Main extends Application {
     }
 
     public static void restart() {
-        //stageMain.close();
+
         startMusic.setVolume(0.2);
         stageMain.setMaximized(true);
         stageMain.setScene(scene);

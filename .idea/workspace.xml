@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c487c04d-b516-4610-9f08-2300f0019656" name="Default Changelist" comment="Css styling sheets added, &#10;-Myview.css&#10;-Sizeofmaze.css&#10;-gamecontroller.css&#10;&#10;and icon changed">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_18_43__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_06_2021_18_43__Default_Changelist_.xml" afterDir="false" />
+    <list default="true" id="c487c04d-b516-4610-9f08-2300f0019656" name="Default Changelist" comment="final changes. &#10;change after the merge, &#10;some checking and other bug fixed&#10;&#10;FINAL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP-Project-PartC.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP-Project-PartC.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/Model/MyModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATP-Project-PartC/Model/MyModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/MyModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MyModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/About.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/About.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/ChooseCharacter.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/ChooseCharacterController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/GameController.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/GameController.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Help.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Help.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/IView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/IView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/LightOrDark.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/LightOrDarkController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/MazeDisplayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MazeDisplayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/SizeOfMaze.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/SizeOfMaze.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/MyViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MyViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/SizeOfMazeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/SizeOfMazeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ViewModel/MyViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewModel/MyViewModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,7 +256,14 @@
       <option name="presentableId" value="LOCAL‎00021" />
       <updated>1623829446136</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="final changes. &#10;change after the merge, &#10;some checking and other bug fixed&#10;&#10;FINAL">
+      <created>1623837062588</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1623837062588</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,14 +300,15 @@
     <MESSAGE value="zoom in and zoom out has been added succesfully !" />
     <MESSAGE value="Music and mute controller option added" />
     <MESSAGE value="adding video if the player has arrived to the goal" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding video if the player has arrived to the goal" />
+    <MESSAGE value="final changes. &#10;change after the merge, &#10;some checking and other bug fixed&#10;&#10;FINAL" />
+    <option name="LAST_COMMIT_MESSAGE" value="final changes. &#10;change after the merge, &#10;some checking and other bug fixed&#10;&#10;FINAL" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/View/MyViewController.java</url>
-          <line>34</line>
+          <line>30</line>
           <properties class="View.MyViewController" method="Start">
             <option name="EMULATED" value="true" />
           </properties>

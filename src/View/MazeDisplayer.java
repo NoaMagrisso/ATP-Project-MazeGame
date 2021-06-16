@@ -151,26 +151,8 @@ public class MazeDisplayer extends Canvas {
         return this.goal;
     }
 
-
     public void helperScroll(Scale myScale){
         this.getTransforms().add(myScale);
     }
-
-//    public void playMusic(){
-//
-//        Media media = new Media(new File("resources\\music\\musicplayer.mp3").toURI().toString());
-//        MediaPlayer startMusic = new MediaPlayer(media);
-//        startMusic.setVolume(0.4);
-//        startMusic.play();
-//        musicThread = new Thread(()->{
-//
-//
-//
-//        });
-//
-//    }
-
-
-
 
 }
