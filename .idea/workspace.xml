@@ -4,44 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c487c04d-b516-4610-9f08-2300f0019656" name="Default Changelist" comment="FINAL CHANGES BEFORE MAVEN AND LOG4J">
-      <change afterPath="$PROJECT_DIR$/logs/server.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/log4j2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/View/About.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/View/Help.fxml" afterDir="false" />
+    <list default="true" id="c487c04d-b516-4610-9f08-2300f0019656" name="Default Changelist" comment="FINAL CHANGES AFTER THE MAVEN AND LOG4J, &#10;logs added in MyModel&#10;&#10;Best regards, &#10;Ido &amp; Noa">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ATP-Project-PartC.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP-Project-PartC.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/Model/IModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/Model/MyModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/IView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/MyView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/MyViewController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/ViewModel/MyViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/CEOs.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImagesFXML/CEOs.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/HomeScene.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImagesFXML/HomeScene.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/helperScene.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImagesFXML/helperScene.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/IModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/IModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/MovementDirection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/MovementDirection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/MyModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/MyModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/AController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/AController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/About.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View/Game.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/GameController.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View/GameController.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Help.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/IView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/IView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MazeDisplayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/MazeDisplayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MyView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View/MyView.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MyView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View/MyView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MyViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/MyViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/SizeOfMaze.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View/SizeOfMaze.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/SizeOfMaze.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View/SizeOfMaze.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/SizeOfMazeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/SizeOfMazeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewModel/MyViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ViewModel/MyViewModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +127,7 @@
       <workItem from="1623148910192" duration="10202000" />
       <workItem from="1623229448060" duration="70676000" />
       <workItem from="1623945380726" duration="8615000" />
-      <workItem from="1623956452946" duration="7294000" />
+      <workItem from="1623956452946" duration="8364000" />
     </task>
     <task id="LOCAL‎00001" summary="First Save.">
       <created>1622740562358</created>
@@ -305,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623838343405</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="FINAL CHANGES AFTER THE MAVEN AND LOG4J, &#10;logs added in MyModel&#10;&#10;Best regards, &#10;Ido &amp; Noa">
+      <created>1623964240452</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1623964240452</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,7 +315,8 @@
     <MESSAGE value="adding video if the player has arrived to the goal" />
     <MESSAGE value="final changes. &#10;change after the merge, &#10;some checking and other bug fixed&#10;&#10;FINAL" />
     <MESSAGE value="FINAL" />
-    <option name="LAST_COMMIT_MESSAGE" value="FINAL" />
+    <MESSAGE value="FINAL CHANGES AFTER THE MAVEN AND LOG4J, &#10;logs added in MyModel&#10;&#10;Best regards, &#10;Ido &amp; Noa" />
+    <option name="LAST_COMMIT_MESSAGE" value="FINAL CHANGES AFTER THE MAVEN AND LOG4J, &#10;logs added in MyModel&#10;&#10;Best regards, &#10;Ido &amp; Noa" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

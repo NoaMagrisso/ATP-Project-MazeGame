@@ -255,12 +255,15 @@ public class GameController extends AController implements Observer, IView {
 
     public void mouseDragged(MouseEvent mouseEvent) {
         if(myViewModel.getMaze() != null) {
-
             int rows = myViewModel.getMaze().getMatrix().length;
             int cols = myViewModel.getMaze().getMatrix()[0].length;
 
+
             double changePositionOnLineX = helper(mazeDisplayer.getHeight(), Math.max(rows, cols), rows, mouseEvent.getX(),mazeDisplayer.getWidth() / Math.max(rows, cols));
             double changePositionOnLineY = helper(mazeDisplayer.getWidth(), Math.max(rows, cols),  cols, mouseEvent.getY(),mazeDisplayer.getHeight() / Math.max(rows, cols));
+
+            if (changePositionOnLineX < 0 || (changePositionOnLineX > cols - 1) || changePositionOnLineY < 0 || (changePositionOnLineY > rows - 1))
+                return;
 
             if (this.mazeDisplayer.getGoal().getRowIndex() == changePositionOnLineY && this.mazeDisplayer.getGoal().getColumnIndex() == changePositionOnLineX)
                 arriveTheGoal();
