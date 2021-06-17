@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c487c04d-b516-4610-9f08-2300f0019656" name="Default Changelist" comment="final changes. &#10;change after the merge, &#10;some checking and other bug fixed&#10;&#10;FINAL">
+    <list default="true" id="c487c04d-b516-4610-9f08-2300f0019656" name="Default Changelist" comment="FINAL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/Model/MyModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATP-Project-PartC/Model/MyModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/IView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/IView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/MyViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/MyViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/ViewModel/MyViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATP-Project-PartC/ViewModel/MyViewModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/IModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/IModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/MyModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MyModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/About.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/About.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/ChooseCharacter.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/ChooseCharacterController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/GameController.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/GameController.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/AController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/AController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Game.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Help.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Help.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/IView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/IView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/LightOrDark.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/LightOrDarkController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/MazeDisplayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MazeDisplayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/MyView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MyView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/MyViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MyViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/SizeOfMaze.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/SizeOfMaze.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/SizeOfMazeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/SizeOfMazeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ViewModel/MyViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewModel/MyViewModel.java" afterDir="false" />
     </list>
@@ -97,15 +98,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -129,6 +128,7 @@
       <workItem from="1622982856666" duration="17875000" />
       <workItem from="1623148910192" duration="10202000" />
       <workItem from="1623229448060" duration="70676000" />
+      <workItem from="1623945380726" duration="8615000" />
     </task>
     <task id="LOCAL‎00001" summary="First Save.">
       <created>1622740562358</created>
@@ -263,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623837062588</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="FINAL">
+      <created>1623838343405</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1623838343405</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,14 +308,15 @@
     <MESSAGE value="Music and mute controller option added" />
     <MESSAGE value="adding video if the player has arrived to the goal" />
     <MESSAGE value="final changes. &#10;change after the merge, &#10;some checking and other bug fixed&#10;&#10;FINAL" />
-    <option name="LAST_COMMIT_MESSAGE" value="final changes. &#10;change after the merge, &#10;some checking and other bug fixed&#10;&#10;FINAL" />
+    <MESSAGE value="FINAL" />
+    <option name="LAST_COMMIT_MESSAGE" value="FINAL" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/View/MyViewController.java</url>
-          <line>30</line>
+          <line>26</line>
           <properties class="View.MyViewController" method="Start">
             <option name="EMULATED" value="true" />
           </properties>

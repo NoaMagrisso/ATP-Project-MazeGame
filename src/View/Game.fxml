@@ -12,7 +12,7 @@
 <?import View.MazeDisplayer?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#KeyPressed" onScroll="#setOnScroll" prefHeight="450.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.GameController">
     <children>
-        <MazeDisplayer  fx:id="mazeDisplayer" height="426.0" layoutY="26.0" onMouseClicked="#mouseClicked" onMouseDragged="#mouseDragged" onScroll="#setOnScroll" width="757.0" />
+        <MazeDisplayer fx:id="mazeDisplayer" height="431.0" layoutY="26.0" onMouseClicked="#mouseClicked" onMouseDragged="#mouseDragged" onScroll="#setOnScroll" width="757.0" />
 
         <Button id="ShowSolution" disable="true" layoutX="729.0" layoutY="1.0" mnemonicParsing="false" onAction="#ShowSolution" prefHeight="26.0" prefWidth="22.0" text="Show Solution" visible="false" />
         <MenuBar id="menuBar" layoutX="-3.0" layoutY="1.0" prefHeight="26.0" prefWidth="763.0">

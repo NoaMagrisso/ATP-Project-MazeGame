@@ -5,8 +5,6 @@ import Model.MovementDirection;
 import algorithms.mazeGenerators.Maze;
 import algorithms.search.Solution;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Observable;
@@ -40,10 +38,6 @@ public class MyViewModel extends Observable implements Observer{
 
     public void generateMaze(int rows, int cols){
         this.model.generateMaze(rows, cols);
-    }
-
-    public void setMaze(Maze newMaze) {
-        this.model.setMaze(newMaze);
     }
 
     public void stop() {

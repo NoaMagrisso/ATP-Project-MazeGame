@@ -2,28 +2,18 @@ package View;
 
 import Server.Configurations;
 import ViewModel.MyViewModel;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import java.awt.event.MouseEvent;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Optional;
 
 
@@ -41,21 +31,13 @@ public class SizeOfMazeController extends AController{
     public CheckMenuItem MyMazeGenerator;
     public MenuItem threadPool;
     public RadioMenuItem menu_Options_Mute;
-    public ImageView imageAbout;
-    public MazeDisplayer ImageDisplayer;
     public Label labelRow;
     public Label labelCol;
     public ToggleButton buttonStartGame;
-    private String chooserCharacterPath;
-    private String chooserEnvironmentPath;
-    private int rows;
-    private int cols;
 
-    public void initialize(Stage stage, MyViewModel myViewModel, String chooserCharacterPath, String chooserEnvironmentPath, MediaPlayer startMusic) throws FileNotFoundException {
+    public void initialize(Stage stage, MyViewModel myViewModel, MediaPlayer startMusic) throws FileNotFoundException {
         this.stage = stage;
         this.myViewModel = myViewModel;
-        this.chooserCharacterPath = chooserCharacterPath;
-        this.chooserEnvironmentPath = chooserEnvironmentPath;
         this.startMusic = startMusic;
     }
 
@@ -74,17 +56,14 @@ public class SizeOfMazeController extends AController{
                 }
             }
 
-
-
             FXMLLoader gameFXMLLoader = new FXMLLoader(getClass().getResource("Game.fxml"));
             Parent game = gameFXMLLoader.load();
             Scene gameScene = new Scene(game);
-
             stage.setScene(gameScene);
-
             GameController gameController = gameFXMLLoader.getController();
-            gameController.initialize(this.stage, this.myViewModel, chooserCharacterPath, chooserEnvironmentPath, Integer.parseInt(textField_mazeRows.getText()), Integer.parseInt(textField_mazeCols.getText()), this.startMusic);
-            stage.setResizable(false);
+            gameController.initialize(this.stage, this.myViewModel, Integer.parseInt(textField_mazeRows.getText()), Integer.parseInt(textField_mazeCols.getText()), this.startMusic);
+            stage.setResizable(true);
+            gameController.setResizeEvent(gameScene);
             stage.show();
 
         } catch (Exception e) {
@@ -161,10 +140,18 @@ public class SizeOfMazeController extends AController{
         catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
-
-
-
+    public void Exit(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Are you afraid? Do you want to quit?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            myViewModel.stop();
+            stage.close();
+        } else {
+            actionEvent.consume();
+        }
     }
 
     public void CheckKeyNumCol(KeyEvent keyEvent) {

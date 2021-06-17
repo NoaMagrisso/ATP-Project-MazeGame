@@ -7,7 +7,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -15,7 +14,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -52,18 +50,19 @@ public class Main extends Application {
         FXMLLoader myViewFXMLLoader = new FXMLLoader();
         myViewRoot = myViewFXMLLoader.load(getClass().getResource("MyView.fxml").openStream());
 
-        primaryStage.setTitle("Maze Game");
+        primaryStage.setTitle("Tom & Jerry : The Maze Game");
 
 
         scene = new Scene(myViewRoot, 600, 400);
         scene.getStylesheets().add(getClass().getResource("MyView.css").toExternalForm());
+        primaryStage.setResizable(false);
 
         primaryStage.setScene(scene);
 
 
         myViewController = myViewFXMLLoader.getController();
         myViewController.setResizeEvent(scene);
-        myViewController.initialize(primaryStage,myViewModel, null);
+        myViewController.initialize(primaryStage,myViewModel, startMusic);
 
 
         try {
@@ -112,7 +111,8 @@ public class Main extends Application {
         startMusic.setVolume(0.2);
         stageMain.setMaximized(true);
         stageMain.setScene(scene);
-        myViewController.initialize(stageMain,myViewModel, null);
+        stageMain.setTitle("Tom & Jerry : The Maze Game");
+        myViewController.initialize(stageMain,myViewModel, startMusic);
         SetStageCloseEvent(stageMain);
         stageMain.show();
     }

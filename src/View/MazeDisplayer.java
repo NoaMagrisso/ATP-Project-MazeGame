@@ -5,38 +5,21 @@ import algorithms.mazeGenerators.Position;
 import algorithms.search.AState;
 import algorithms.search.MazeState;
 import algorithms.search.Solution;
-import javafx.beans.property.*;
-import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
-import javafx.scene.paint.Color;
 import javafx.scene.transform.Scale;
-
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class MazeDisplayer extends Canvas {
-
 
     private int[][] mazeMatrix;
     private Solution solution;
     private int playerRow = 0;
     private int playerCol = 0;
-    public Thread musicThread;
-
     private Position goal;
-    private volatile Object Factor = new Object();
-
-
     int rowSolution_i;
     int colSolution_i;
-
 
     public int getPlayerRow() {
         return playerRow;
@@ -68,7 +51,7 @@ public class MazeDisplayer extends Canvas {
         draw();
     }
 
-    private void draw() {
+    public void draw() {
 
         if (mazeMatrix != null) {
             try {
@@ -124,17 +107,17 @@ public class MazeDisplayer extends Canvas {
             for (int j = 0; j < cols; j++) {
 
                 if (i == this.goal.getRowIndex() && j == this.goal.getColumnIndex()) {
-                    graphicsContext.drawImage(goalImage, j * cellWidth, i * cellHeight, cellWidth, cellHeight); //TODO if the image was not found
+                    graphicsContext.drawImage(goalImage, j * cellWidth, i * cellHeight, cellWidth, cellHeight);
                 }
                 else if (mazeMatrix[i][j] == 1 && (i != this.goal.getRowIndex() || j != this.goal.getColumnIndex())) {
                     double x = j * cellWidth;
                     double y = i * cellHeight;
-                    graphicsContext.drawImage(wallImage, x, y, cellWidth, cellHeight); //TODO if the image was not found
+                    graphicsContext.drawImage(wallImage, x, y, cellWidth, cellHeight);
                 }
                 else {
                     double x = j * cellWidth;
                     double y = i * cellHeight;
-                    graphicsContext.drawImage(wayImage, x, y, cellWidth, cellHeight); //TODO if the image was not found
+                    graphicsContext.drawImage(wayImage, x, y, cellWidth, cellHeight);
                 }
 
             }

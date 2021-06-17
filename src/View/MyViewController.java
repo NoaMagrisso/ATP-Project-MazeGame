@@ -1,17 +1,13 @@
 package View;
 
 import ViewModel.MyViewModel;
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.MediaPlayer;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class MyViewController extends AController{
@@ -36,11 +32,11 @@ public class MyViewController extends AController{
             Scene sizeOfMazeScene = new Scene(sizeOfMaze);
             sizeOfMazeScene.getStylesheets().add(getClass().getResource("SizeOfMaze.css").toExternalForm());
             stage.setScene(sizeOfMazeScene);
+            stage.setResizable(false);
 
             SizeOfMazeController sizeOfMazeController = sizeOfMazeFXMLLoader.getController();
-            sizeOfMazeController.initialize(this.stage, this.myViewModel, null, null, this.startMusic);
+            sizeOfMazeController.initialize(this.stage, this.myViewModel, this.startMusic);
             stage.show();
-
 
         } catch (Exception e) {
             e.printStackTrace();

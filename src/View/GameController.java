@@ -2,7 +2,6 @@ package View;
 
 import Server.Configurations;
 import ViewModel.MyViewModel;
-import algorithms.search.BreadthFirstSearch;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -20,7 +19,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
-
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -28,7 +26,6 @@ import javafx.scene.transform.Scale;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Observable;
@@ -37,12 +34,11 @@ import java.util.Optional;
 
 public class GameController extends AController implements Observer, IView {
 
-    public AnchorPane middlePane;
+
     public Menu Options;
     public Menu Properties;
     public MenuItem threadPool;
-    private String chooserCharacterPath;
-    private String chooserEnvironmentPath;
+    public RadioMenuItem menu_Options_Mute;
     private int rows;
     private int cols;
     private double zoomVal;
@@ -56,8 +52,6 @@ public class GameController extends AController implements Observer, IView {
     public javafx.scene.control.CheckMenuItem MyMazeGenerator;
     @FXML
     private MazeDisplayer mazeDisplayer;
-    private DoubleProperty myScale = new SimpleDoubleProperty(1.0);
-
     StringProperty updatePlayerRow = new SimpleStringProperty();
     StringProperty updatePlayerCol = new SimpleStringProperty();
 
@@ -65,11 +59,9 @@ public class GameController extends AController implements Observer, IView {
 
     public static int numSaveMaze = 1;
 
-    public void initialize(Stage stage, MyViewModel myViewModel, String chooserCharacterPath, String chooserEnvironmentPath, int rows, int cols, MediaPlayer startMusic) {
+    public void initialize(Stage stage, MyViewModel myViewModel, int rows, int cols, MediaPlayer startMusic) {
         this.stage = stage;
         this.myViewModel = myViewModel;
-        this.chooserCharacterPath = chooserCharacterPath;
-        this.chooserEnvironmentPath = chooserEnvironmentPath;
         this.rows = rows;
         this.cols = cols;
         this.startMusic = startMusic;
@@ -86,9 +78,7 @@ public class GameController extends AController implements Observer, IView {
             FXMLLoader myViewFXMLLoader = new FXMLLoader();
             Parent myView = myViewFXMLLoader.load(getClass().getResource("MyView.fxml").openStream());
             Scene myViewScene = new Scene(myView);
-
             stage.setScene(myViewScene);
-
             MyViewController myViewController = myViewFXMLLoader.getController();
             myViewController.initialize(this.stage, this.myViewModel, startMusic);
             stage.show();
@@ -141,7 +131,6 @@ public class GameController extends AController implements Observer, IView {
 
     private void playerMoved() {
         setPlayerPosition(myViewModel.getPlayerRow(), myViewModel.getPlayerCol());
-
     }
 
 
@@ -171,7 +160,8 @@ public class GameController extends AController implements Observer, IView {
 
     public void Save() throws IOException {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        File newFile = new File(System.getProperty("user.home"));
+        fileChooser.setInitialDirectory(newFile);
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Maze Files", "*.maze")
         );
@@ -185,14 +175,14 @@ public class GameController extends AController implements Observer, IView {
 
     public void Load() throws IOException, ClassNotFoundException {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        File newFile = new File(System.getProperty("user.home"));
+        fileChooser.setInitialDirectory(newFile);
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Maze Files", "*.maze")
         );
         File loadFile = fileChooser.showOpenDialog(this.stage);
         if (loadFile != null) {
             myViewModel.loadGame(loadFile);
-        } else {
         }
     }
 
@@ -260,22 +250,16 @@ public class GameController extends AController implements Observer, IView {
         catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
     }
-
-
-
 
     public void mouseDragged(MouseEvent mouseEvent) {
         if(myViewModel.getMaze() != null) {
 
-            double changePositionOnLineX = helper(Math.max(myViewModel.getMaze().getMatrix()[0].length, myViewModel.getMaze().getMatrix().length),mazeDisplayer.getHeight(),
-                    myViewModel.getMaze().getMatrix().length,mouseEvent.getX(),mazeDisplayer.getWidth() / Math.max(myViewModel.getMaze().getMatrix()[0].length, myViewModel.getMaze().getMatrix().length));
+            int rows = myViewModel.getMaze().getMatrix().length;
+            int cols = myViewModel.getMaze().getMatrix()[0].length;
 
-            double changePositionOnLineY = helper(Math.max(myViewModel.getMaze().getMatrix()[0].length, myViewModel.getMaze().getMatrix().length),mazeDisplayer.getWidth(),
-                    myViewModel.getMaze().getMatrix()[0].length,mouseEvent.getY(),mazeDisplayer.getHeight() / Math.max(myViewModel.getMaze().getMatrix()[0].length, myViewModel.getMaze().getMatrix().length));
+            double changePositionOnLineX = helper(mazeDisplayer.getHeight(), Math.max(rows, cols), rows, mouseEvent.getX(),mazeDisplayer.getWidth() / Math.max(rows, cols));
+            double changePositionOnLineY = helper(mazeDisplayer.getWidth(), Math.max(rows, cols),  cols, mouseEvent.getY(),mazeDisplayer.getHeight() / Math.max(rows, cols));
 
             if (this.mazeDisplayer.getGoal().getRowIndex() == changePositionOnLineY && this.mazeDisplayer.getGoal().getColumnIndex() == changePositionOnLineX)
                 arriveTheGoal();
@@ -304,17 +288,13 @@ public class GameController extends AController implements Observer, IView {
     public void arriveTheGoal() {
 
         Main.startMusic.setVolume(0);
-        //if ((playerRow == this.goal.getRowIndex() - 1) && playerCol == this.goal.getColumnIndex()) {}
         Media media = new Media(new File("resources\\video\\finalVideo.mp4").toURI().toString());
-
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         MediaView mediaView = new MediaView(mediaPlayer);
         mediaPlayer.setAutoPlay(true);
-
-        //setting group and scene
         Group root = new Group();
         root.getChildren().add(mediaView);
-        Scene scene2 = new Scene(root,500,400);
+        Scene scene2 = new Scene(root, 1200,800);
         this.stage.setScene(scene2);
         this.stage.setTitle("Playing video");
         this.stage.show();
@@ -335,7 +315,7 @@ public class GameController extends AController implements Observer, IView {
         mazeDisplayer.requestFocus();
     }
 
-    private double helper(int maxsize, double mazedisplayerSize, int mazeSize,double mouseEvent,double number){
+    private double helper(double mazedisplayerSize, int maxsize,  int mazeSize,double mouseEvent,double number){
         double result = (int) ((mouseEvent) / (number) - ((mazedisplayerSize / 2 - ((mazedisplayerSize/maxsize) * mazeSize / 2)) / (mazedisplayerSize/maxsize)));
         return result;
     }
@@ -360,6 +340,23 @@ public class GameController extends AController implements Observer, IView {
         myScale.setX(mazeDisplayer.getScaleX() * zoomVal);
         myScale.setY(mazeDisplayer.getScaleY() * zoomVal);
         mazeDisplayer.helperScroll(myScale);
+    }
+
+    public void setResizeEvent(Scene scene) {
+
+        scene.widthProperty().addListener((observable, oldValue, newValue) -> {
+            mazeDisplayer.setWidth (scene.getWidth());
+            mazeDisplayer.draw();
+
+        });
+
+
+        scene.heightProperty().addListener((observable, oldValue, newValue) -> {
+            mazeDisplayer.setHeight(scene.getHeight());
+            mazeDisplayer.draw();
+
+        });
 
     }
+
 }

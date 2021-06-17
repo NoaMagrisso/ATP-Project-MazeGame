@@ -42,20 +42,7 @@ public abstract class AController {
         }
     }
 
-    public static void SetStageCloseEvent(Stage stage, MyModel myModel) {
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            public void handle(WindowEvent windowEvent) {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setHeaderText("You can still stay here... Are you sure that you want to exit?");
-                Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == ButtonType.OK) {
-                    myModel.stop();
-                } else {
-                    windowEvent.consume();
-                }
-            }
-        });
-    }
+
 
     public void SetMute(ActionEvent actionEvent) {
         if (this.startMusic.getVolume() != 0)

@@ -3,22 +3,13 @@ package Model;
 import Client.Client;
 import IO.MyDecompressorInputStream;
 import Server.Server;
-import ViewModel.MyViewModel;
 import algorithms.mazeGenerators.Maze;
-import algorithms.mazeGenerators.MyMazeGenerator;
 import algorithms.mazeGenerators.Position;
-import algorithms.mazeGenerators.SimpleMazeGenerator;
-import algorithms.search.AState;
 import algorithms.search.Solution;
 import Server.ServerStrategyGenerateMaze;
 import Server.ServerStrategySolveSearchProblem;
 import Client.IClientStrategy;
-import javafx.scene.input.KeyCode;
-
-import java.util.ArrayList;
 import java.util.Observable;
-import java.util.Observer;
-
 import java.io.*;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -82,11 +73,11 @@ public class MyModel extends Observable implements IModel{
 
         setChanged();
         notifyObservers("maze generated");
-        movePlayer(0, 0, null);
+        movePlayer(0, 0);
     }
 
 
-    private void movePlayer(int row, int col, MovementDirection dirc){
+    private void movePlayer(int row, int col){
         this.playerRow = row;
         this.playerCol = col;
         setChanged();
@@ -129,7 +120,7 @@ public class MyModel extends Observable implements IModel{
     }
 
     public Solution getMazeSolution() {
-        //solveMaze();
+
         return mazeSolution;
     }
 
@@ -160,7 +151,7 @@ public class MyModel extends Observable implements IModel{
     @Override
     public void loadMaze(File loadFile) {
         try {
-            BufferedReader br = new BufferedReader(new FileReader(loadFile));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(loadFile));
             int playerRowIdx = 0;
             int playerColIdx = 0;
             int goalMazeRow = 1;
@@ -169,30 +160,35 @@ public class MyModel extends Observable implements IModel{
             int rows = 2;
             int cols = 2;
 
-            for (int i = 0 ; i < 6 ; i++) {
-                String line = br.readLine();
-                if (line != null) {
-                    if (i == 0)
-                        playerRowIdx = Integer.parseInt(line);
-                    if (i == 1)
-                        playerColIdx = Integer.parseInt(line);
-                    if (i == 2)
-                        goalMazeRow = Integer.parseInt(line);
-                    if (i == 3)
-                        goalMazeCol = Integer.parseInt(line);
-                    if (i == 4)
-                        rows = Integer.parseInt(line);
-                    if (i == 5)
-                        cols = Integer.parseInt(line);
-                }
+            String line = bufferedReader.readLine();
+            int index = 0;
+            while (line != null && index <= 5) {
+
+                if (index == 0)
+                    playerRowIdx = Integer.parseInt(line);
+                else if (index == 1)
+                    playerColIdx = Integer.parseInt(line);
+                else if (index == 2)
+                    goalMazeRow = Integer.parseInt(line);
+                else if (index == 3)
+                    goalMazeCol = Integer.parseInt(line);
+                else if (index == 4)
+                    rows = Integer.parseInt(line);
+                else
+                    cols = Integer.parseInt(line);
+                index++;
+                line = bufferedReader.readLine();
             }
+
+
+
 
             goalMaze = new Position(goalMazeRow, goalMazeCol);
 
             int[][] matrixForMaze = new int[rows][cols];
-            String line = "";
+            line = "";
             int rowIdx = 0;
-            while ((line = br.readLine()) != null) {
+            while ((line = bufferedReader.readLine()) != null) {
                 String[] colsOfMatrix = line.split(",");
                 int colIdx = 0;
                 for (String col : colsOfMatrix) {
@@ -201,7 +197,7 @@ public class MyModel extends Observable implements IModel{
                 }
                 rowIdx++;
             }
-            br.close();
+            bufferedReader.close();
             this.maze = new Maze(rows, cols);
             this.maze.setMatrix(matrixForMaze);
             this.maze.setEnd(goalMaze);
@@ -224,39 +220,39 @@ public class MyModel extends Observable implements IModel{
         switch (direction) {
             case UP -> {
                 if ((playerRow > 0) && ((this.maze.getMatrix()[playerRow - 1][playerCol]) != 1))
-                    movePlayer(playerRow - 1, playerCol, direction);
+                    movePlayer(playerRow - 1, playerCol);
             }
             case DOWN -> {
                 if ((playerRow < maze.getRows() - 1) && ((this.maze.getMatrix()[playerRow + 1][playerCol]) != 1))
-                    movePlayer(playerRow + 1, playerCol, direction);
+                    movePlayer(playerRow + 1, playerCol);
             }
             case LEFT -> {
                 if ((playerCol > 0) && ((this.maze.getMatrix()[playerRow][playerCol - 1]) != 1))
-                    movePlayer(playerRow, playerCol - 1, direction);
+                    movePlayer(playerRow, playerCol - 1);
             }
             case RIGHT -> {
                 if ((playerCol < maze.getCols() - 1) && ((this.maze.getMatrix()[playerRow][playerCol + 1]) != 1))
-                    movePlayer(playerRow, playerCol + 1, direction);
+                    movePlayer(playerRow, playerCol + 1);
             }
             case UPLEFT -> {
                 if ((playerRow > 0) && (playerCol > 0) && ((this.maze.getMatrix()[playerRow - 1][playerCol - 1]) != 1))
                     if (((this.maze.getMatrix()[playerRow - 1][playerCol]) != 1) || ((this.maze.getMatrix()[playerRow][playerCol - 1]) != 1))
-                        movePlayer(playerRow - 1, playerCol - 1, direction);
+                        movePlayer(playerRow - 1, playerCol - 1);
             }
             case UPRIGHT -> {
                 if ((playerRow > 0) && (playerCol < maze.getCols() - 1) && ((this.maze.getMatrix()[playerRow - 1][playerCol + 1]) != 1))
                     if (((this.maze.getMatrix()[playerRow - 1][playerCol]) != 1) || ((this.maze.getMatrix()[playerRow][playerCol + 1]) != 1))
-                        movePlayer(playerRow - 1, playerCol + 1, direction);
+                        movePlayer(playerRow - 1, playerCol + 1);
             }
             case DOWNRIGHT -> {
                 if ((playerRow < maze.getRows() - 1) && (playerCol < maze.getCols() - 1) && ((this.maze.getMatrix()[playerRow + 1][playerCol + 1]) != 1))
                     if (((this.maze.getMatrix()[playerRow + 1][playerCol]) != 1) || ((this.maze.getMatrix()[playerRow][playerCol + 1]) != 1))
-                        movePlayer(playerRow + 1, playerCol + 1, direction);
+                        movePlayer(playerRow + 1, playerCol + 1);
             }
             case DOWNLEFT -> {
                 if ((playerRow < maze.getRows() - 1) && (playerCol > 0) && ((this.maze.getMatrix()[playerRow + 1][playerCol - 1]) != 1))
                     if (((this.maze.getMatrix()[playerRow + 1][playerCol]) != 1) || ((this.maze.getMatrix()[playerRow][playerCol - 1]) != 1))
-                        movePlayer(playerRow + 1, playerCol - 1, direction);
+                        movePlayer(playerRow + 1, playerCol - 1);
             }
         }
     }
