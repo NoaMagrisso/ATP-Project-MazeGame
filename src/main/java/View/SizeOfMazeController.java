@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
@@ -56,8 +55,13 @@ public class SizeOfMazeController extends AController{
                 }
             }
 
-            FXMLLoader gameFXMLLoader = new FXMLLoader(getClass().getResource("Game.fxml"));
+            //FXMLLoader gameFXMLLoader = new FXMLLoader(getClass().getResource("View/Game.fxml"));
+            //Parent game = gameFXMLLoader.load();
+
+            FXMLLoader gameFXMLLoader = new FXMLLoader(getClass().getClassLoader().getResource("View/Game.fxml"));
             Parent game = gameFXMLLoader.load();
+
+
             Scene gameScene = new Scene(game);
             stage.setScene(gameScene);
             GameController gameController = gameFXMLLoader.getController();
@@ -129,8 +133,12 @@ public class SizeOfMazeController extends AController{
         try {
             Stage newStage = new Stage();
             newStage.setTitle("About");
-            FXMLLoader myViewFXMLLoader = new FXMLLoader();
-            Parent myViewRoot = myViewFXMLLoader.load(getClass().getResource("About.fxml").openStream());
+            //FXMLLoader myViewFXMLLoader = new FXMLLoader();
+            //Parent myViewRoot = myViewFXMLLoader.load(getClass().getResource("View/About.fxml").openStream());
+
+            FXMLLoader myViewFXMLLoader = new FXMLLoader(getClass().getClassLoader().getResource("View/About.fxml"));
+            Parent myViewRoot = myViewFXMLLoader.load();
+
             Scene scene = new Scene(myViewRoot, 550, 400);
             newStage.setScene(scene);
             newStage.initModality(Modality.APPLICATION_MODAL);

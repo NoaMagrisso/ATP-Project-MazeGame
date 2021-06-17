@@ -2,8 +2,6 @@ package View;
 
 import Server.Configurations;
 import ViewModel.MyViewModel;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
@@ -18,7 +16,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -238,8 +235,12 @@ public class GameController extends AController implements Observer, IView {
         try {
             Stage newStage = new Stage();
             newStage.setTitle("Help");
-            FXMLLoader myViewFXMLLoader = new FXMLLoader();
-            Parent myViewRoot = myViewFXMLLoader.load(getClass().getResource("Help.fxml").openStream());
+            //FXMLLoader myViewFXMLLoader = new FXMLLoader();
+            //Parent myViewRoot = myViewFXMLLoader.load(getClass().getResource("View/Help.fxml").openStream());
+
+            FXMLLoader myViewFXMLLoader = new FXMLLoader(getClass().getClassLoader().getResource("View/Help.fxml"));
+            Parent myViewRoot = myViewFXMLLoader.load();
+
             Scene scene = new Scene(myViewRoot, 550, 400);
             newStage.setScene(scene);
             newStage.initModality(Modality.APPLICATION_MODAL);

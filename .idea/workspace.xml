@@ -1,25 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="c487c04d-b516-4610-9f08-2300f0019656" name="Default Changelist" comment="FINAL">
+    <list default="true" id="c487c04d-b516-4610-9f08-2300f0019656" name="Default Changelist" comment="FINAL CHANGES BEFORE MAVEN AND LOG4J">
+      <change afterPath="$PROJECT_DIR$/logs/server.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/log4j2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/View/About.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/View/Help.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/IView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/IView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/MyViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/MyViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/ViewModel/MyViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATP-Project-PartC/ViewModel/MyViewModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ATP-Project-PartC.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP-Project-PartC.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/Model/IModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/Model/MyModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/IView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/MyView.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/View/MyViewController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project-PartC/ViewModel/MyViewModel.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/IModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/IModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/MyModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/MyModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/AController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/AController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Game.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/IView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/IView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MazeDisplayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MazeDisplayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MyView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MyView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MyViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MyViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/SizeOfMaze.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/SizeOfMaze.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/SizeOfMazeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/SizeOfMazeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ViewModel/MyViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewModel/MyViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/CEOs.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImagesFXML/CEOs.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/HomeScene.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImagesFXML/HomeScene.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/helperScene.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ImagesFXML/helperScene.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/IModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/IModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/MovementDirection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/MovementDirection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/MyModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/MyModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/AController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/AController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/About.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View/Game.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/GameController.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View/GameController.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Help.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/IView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/IView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/MazeDisplayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/MazeDisplayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/MyView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View/MyView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/MyView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View/MyView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/MyViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/MyViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/SizeOfMaze.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View/SizeOfMaze.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/SizeOfMaze.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/View/SizeOfMaze.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/SizeOfMazeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/SizeOfMazeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ViewModel/MyViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ViewModel/MyViewModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +52,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -65,22 +87,32 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/javaFx/javafx-sdk-16/lib" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/Images" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.17931035" />
     <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\idohe\IdeaProjects\ATP-Project-PartC\src\main\resources\Images" />
       <recent name="C:\Users\Noa Magrisso\IdeaProjects\ATP-Project-PartC\resources" />
       <recent name="C:\Users\Noa Magrisso\IdeaProjects\ATP-Project-PartC\src\View" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\idohe\IdeaProjects\ATP-Project-PartC\resources" />
+      <recent name="C:\Users\idohe\IdeaProjects\ATP-Project-PartC\src\main\resources\ImagesFXML" />
+      <recent name="C:\Users\idohe\IdeaProjects\ATP-Project-PartC\src\main\resources\View" />
+      <recent name="C:\Users\idohe\IdeaProjects\ATP-Project-PartC\src\main\java\View" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
     </key>
   </component>
   <component name="RunManager">
@@ -98,13 +130,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -129,6 +163,7 @@
       <workItem from="1623148910192" duration="10202000" />
       <workItem from="1623229448060" duration="70676000" />
       <workItem from="1623945380726" duration="8615000" />
+      <workItem from="1623956452946" duration="7294000" />
     </task>
     <task id="LOCAL‎00001" summary="First Save.">
       <created>1622740562358</created>
@@ -314,13 +349,10 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/View/MyViewController.java</url>
-          <line>26</line>
-          <properties class="View.MyViewController" method="Start">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="5" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/View/Main.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
