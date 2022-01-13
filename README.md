@@ -9,7 +9,7 @@ If you are getting into trouble, you can be helped by our solution.
 
 ## The Major Code Designs
 
-| A Design | The role |
+| A Design | It's role |
 | --- | --- |
 | Two Serevers | Each one of them have different strategy. The first server supports on genertaing the maze - by few algorithms. The second server supports on solving the maze be few algorithms, such as BFS/DFS and etc. |
 | MVVM Architecture | Model-View-ViewModel, when the model is dealing with the business logic, the view layer with all the visual design - GUI so we implemented JavaFX project, and the ViewModel is the connection part between them. |
@@ -19,5 +19,6 @@ If you are getting into trouble, you can be helped by our solution.
 * For testing our major classes and methods, we used Unit Testing (JUnit).
 * Throughout the project we have maintened the principle of separating the problem from the probelm-solving algorithm, in order to support the principle of Polymorphism.
 * By threads, we also soppurted in listening to music during your stay in the app and in the game, and when you will arive the goal a video will start playing.
+
 
 ![This is an image](https://github.com/NoaMagrisso/ATP-Project-MazeGame/blob/main/src/main/resources/ImagesFXML/helperScene.jpg)
